@@ -16,7 +16,15 @@ const themeToggle = document.getElementById('theme-toggle');
 if(themeToggle) {
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('light-mode');
-        document.getElementById('tema-tekst').textContent = document.body.classList.contains('light-mode') ? 'Light Mode' : 'Dark Mode';
+    
+        if(document.body.classList.contains('light-mode') ){ 
+            document.getElementById('tema-tekst').textContent = 'Light Mode';
+
+        }else { 
+             document.getElementById('tema-tekst').textContent = 'Dark Mode';
+
+        }
+       
     });
 }
 
