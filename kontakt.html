@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html lang = "bs">
+
+    
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/tptpstil.css">
+        
+        <meta name="viewport" content="width=device-width, inital-scale=1.0">
+        <title>Mamma Mia Tuzla</title>
+
+    </head>
+
+    <body>
+    <nav>
+        <div class="nav-logo">Mamma Mia</div>
+        <ul class="nav-lista">
+            <li><a href="#O nama">O nama</a></li>
+            <li><a href="sadrzaj.html">Meni</a></li>
+            <li><a href="#Ponude">Dnevne ponude</a></li>
+            <li><a href="kontakt.html" class="nav-kontakt">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <main class="glavni-kontejner" style="min-height: 100vh; padding-top: 100px;">
+        <div class="gornji">
+            <div class="prekidac-kontejner">
+                <span id="tema-tekst">Dark Mode</span>
+                <button id="theme-toggle" class="toggle-switch" type="button">
+                    <span class="krug"></span>
+                </button>
+            </div>
+        </div>
+   
+
+
+
+       <h1 class="naslov">KONTAKT</h1>
+
+        <div class="GORNJI">
+            <div class="kutija">
+                <h3>KONTAKT PODACI</h3>
+                <div class="kontakt-tekst">
+                    <p><strong>Adresa:</strong> Trg Slobode, Tuzla</p>
+                    <p><strong>Telefon:</strong> +387 35 123 456</p>
+                   <p><strong> E-mail:</strong> mamamia@gmail.com </p>
+                    <p><strong>Radno vrijeme:</strong> 08:00 - 23:00</p>
+                </div>
+                <div class="google-maps-box">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2843.064547432422!2d18.6749!3d44.539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDMyJzIwLjQiTiAxOMKwNDAnMjkuNiJF!5e0!3m2!1sbs!2sba!4v1625145600000!5m2!1sbs!2sba" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            
+                <div class="kutija">
+    <h3>REZERVACIJA </h3>
+    <form id="formaRezervacija"> <input type="text" id="ime" placeholder="Vaše ime i prezime" required>
+        
+        <label class="label-stil">Datum rezervacije:</label>
+        <input type="date" id="inputDatum" required>
+
+        <label class="label-stil">Broj osoba (Maksimalno 10):</label>
+        <input type="number" id="inputOsobe" placeholder="1-10" required>
+
+        <label class="label-stil">Vrijeme (08:00 - 23:00):</label>
+        <input type="time" id="inputVrijeme" required>
+
+        <button type="submit" class="DUGME">POTVRDI REZERVACIJU</button>
+    </form>
+</div>
+
+
+        </div>
+
+        <div class="donji">
+            <div class="kutija">
+                <h3>KNJIGA UTISAKA I ŽALBE</h3>
+                <form id="formaZalba">
+                    <textarea id="tekstZalbe" placeholder="Vaša poruka..." rows="4" required></textarea>
+                    <button type="submit" class="btn-zalba">PODNESI</button>
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+</main>
+
+
+
+
+
+    <footer>
+    <div class="footer-logo">Mamma Mia</div>
+    <div class="footer-tagline">Ristorante Italiano · Tuzla</div>
+    <div class="footer-linkovi">
+      <a href="#O nama">O nama</a>
+      <a href="sadrzaj.html">Meni</a>
+      <a href="#Ponude">Dnevne ponude</a>
+      <a href="kontakt.html">Kontakt</a>
+    </div>
+    <div class="footer-prava">© 2026 Mamma Mia Tuzla. Sva prava pridržana.</div>
+  </footer>
+ 
+    <div id="mojModal" class="modal">
+        <div class="modal-sadrzaj">
+            <div id="modalIkona" class="modal-ikona"></div>
+            <h2 id="modalNaslov">Naslov</h2>
+            <p id="modalPoruka">Poruka ide ovdje.</p>
+            <button class="btn-zatvori" onclick="zatvoriModal()">U REDU</button>
+        </div>
+    </div>
+
+
+  <script src="js/tptpskripte.js"></script>
+  
+
+
+
+
+</body>
+
+</html>
