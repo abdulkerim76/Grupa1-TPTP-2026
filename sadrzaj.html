@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restoran "Mamma Mia"</title>
+    <link rel="stylesheet" href="restorancss.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <img src="logo2.png" alt="Logo restorana">
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#o-nama">O N NAMA</a></li>
+                <li><a href="#meni">MENI</a></li>
+                <li><a href="#dnevne">DNEVNE PONUDE</a></li>
+                <li><a href="#kontakt">KONTAKT</a></li>
+            </ul>
+        </nav>
+
+        <!-- Dark mode toggle -->
+        <div class="toggle-container">
+            <span>Dark Mode</span>
+            <label class="switch">
+                <input type="checkbox" id="darkModeToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </header>
+
+    <!-- POČETNA / HERO -->
+    <section id="pocetna" class="hero">
+        <div class="overlay">
+            <p class="location">TUZLA • BOSNA I HERCEGOVINA</p>
+
+            <h1>Mamma Mia</h1>
+
+            <p class="subtitle">
+                Autentična italijanska kuhinja u srcu Tuzle.
+                Svaki zalogaj priča o strasti, tradiciji i ljubavi prema hrani.
+            </p>
+
+            <div class="buttons">
+                <a href="#meni" class="btn gold">POGLEDAJTE MENI</a>
+                <a href="#kontakt" class="btn transparent">REZERVIŠITE STO</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENI -->
+    <section id="meni" class="meni">
+        <h2>Meni restorana</h2>
+
+        <input type="radio" name="tab" id="sva" checked>
+        <input type="radio" name="tab" id="dorucak">
+        <input type="radio" name="tab" id="rucak">
+        <input type="radio" name="tab" id="vecera">
+        <input type="radio" name="tab" id="desert">
+
+        <div class="tabs">
+            <label for="sva">Sva jela</label>
+            <label for="dorucak">Doručak</label>
+            <label for="rucak">Ručak</label>
+            <label for="vecera">Večera</label>
+            <label for="desert">Desert</label>
+        </div>
+
+        <div class="content">
+
+            <div class="item dorucak">
+                <img src="omlet.jpg" alt="Omlet">
+                <div class="item-info">
+                    <h3>Omlet sa sirom</h3>
+                    <p>Ukusan doručak sa svježim jajima i sirom.</p>
+                </div>
+            </div>
+
+            <div class="item dorucak">
+                <img src="palacinke.jpg" alt="Palačinke">
+                <div class="item-info">
+                    <h3>Palačinke s medom</h3>
+                    <p>Mekane palačinke sa domaćim medom i orasima.</p>
+                </div>
+            </div>
+
+            <div class="item rucak">
+                <img src="margarita.jpg" alt="Pizza">
+                <div class="item-info">
+                    <h3>Pizza Margarita</h3>
+                    <p>Klasična italijanska pizza sa sirom i bosiljkom.</p>
+                </div>
+            </div>
+
+            <div class="item rucak">
+                <img src="cevapi.jpg" alt="Ćevapi">
+                <div class="item-info">
+                    <h3>Ćevapi sa lepinjom</h3>
+                    <p>Domaći ćevapi sa somunom i lukom.</p>
+                </div>
+            </div>
+
+            <div class="item vecera">
+                <img src="carbonara.jpg" alt="Pasta">
+                <div class="item-info">
+                    <h3>Pasta Carbonara</h3>
+                    <p>Kremasta tjestenina sa pancetom i parmezanom.</p>
+                </div>
+            </div>
+
+            <div class="item vecera">
+                <img src="pastrmka.jpg" alt="Riba">
+                <div class="item-info">
+                    <h3>Pečena pastrmka</h3>
+                    <p>Svježa riba pečena sa začinskim biljem i limunom.</p>
+                </div>
+            </div>
+
+            <div class="item desert">
+                <img src="tiramisu.jpg" alt="Tiramisu">
+                <div class="item-info">
+                    <h3>Tiramisu</h3>
+                    <p>Italijanski desert sa kafom, mascarpone sirom i kakaom.</p>
+                </div>
+            </div>
+
+            <div class="item desert">
+                <img src="lavakolac.jpg" alt="Čokoladni kolač">
+                <div class="item-info">
+                    <h3>Čokoladni lava kolač</h3>
+                    <p>Topli kolač sa tečnim centrom od crne čokolade.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- O NAMA -->
+    <section id="o-nama" class="o-nama">
+        <h2>O nama</h2>
+        <p>
+            Restoran "Mamma Mia" otvoren je 2025. godine s ciljem da gostima
+            ponudi najkvalitetnija domaća i italijanska jela pripremljena
+            s ljubavlju i pažnjom.
+        </p>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt" class="kontakt">
+        <h2>Kontakt</h2>
+        <p>Email: restoran.mamamia@gmail.com</p>
+        <p>Telefon: +387 61 188 333</p>
+        <p>Adresa: Trg slobode bb, Tuzla Grad 75000</p>
+    </section>
+
+
+
+<!-- DNEVNE PONUDE / DETALJNI SADRŽAJ -->
+<section id="dnevne" class="detalji">
+
+    <h2>Dnevne ponude i specijaliteti</h2>
+
+    <!-- Bookmark navigacija -->
+    <div class="bookmark-nav">
+        <a href="#tabela">Tabela</a>
+        <a href="#galerija">Galerija</a>
+        <a href="#mapa">Mapa restorana</a>
+        <a href="#lista">Kategorije</a>
+    </div>
+
+    <!--  TABELA -->
+    <section id="tabela">
+        <h3>Cjenovnik specijaliteta</h3>
+
+        <table>
+            <tr>
+                <th>Jelo</th>
+                <th>Kategorija</th>
+                <th>Cijena</th>
+                <th>Vrijeme pripreme</th>
+            </tr>
+
+            <tr>
+                <td>Pizza Margarita</td>
+                <td>Ručak</td>
+                <td>12 KM</td>
+                <td>20 min</td>
+            </tr>
+
+            <tr>
+                <td>Pasta Carbonara</td>
+                <td>Večera</td>
+                <td>15 KM</td>
+                <td>25 min</td>
+            </tr>
+
+            <tr>
+                <td>Tiramisu</td>
+                <td>Desert</td>
+                <td>8 KM</td>
+                <td>10 min</td>
+            </tr>
+
+            <tr>
+                <td>Omlet sa sirom</td>
+                <td>Doručak</td>
+                <td>9 KM</td>
+                <td>15 min</td>
+            </tr>
+
+            <tr>
+                <td>Pečena pastrmka</td>
+                <td>Večera</td>
+                <td>18 KM</td>
+                <td>30 min</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- GALERIJA -->
+    <section id="galerija">
+        <h3>Galerija restorana</h3>
+
+        <div class="gallery">
+            <img src="galerija1.jpg" alt="Unutrašnjost restorana">
+            <img src="galerija2.jpg" alt="Pizza specijalitet">
+            <img src="galerija3.jpg" alt="Pasta Carbonara">
+            <img src="galerija4.jpg" alt="Desert Tiramisu">
+            <img src="galerija5.jpg" alt="Večernja atmosfera">
+            <img src="galerija6.jpg" alt="Terasa restorana">
+        </div>
+    </section>
+
+    <!-- IMAGE MAP -->
+    <section id="mapa">
+        <h3>Mapa restorana</h3>
+
+        <img src="restoranmapa.jpg" alt="Mapa restorana" usemap="#restoranmap">
+
+        <map name="restoranmap">
+            <area shape="rect" coords="50,50,250,250" href="#kontakt" alt="Kontakt zona">
+            <area shape="circle" coords="500,200,100" href="#meni" alt="Meni zona">
+        </map>
+    </section>
+
+    <!-- UGNIJEŽĐENA LISTA -->
+    <section id="lista">
+        <h3>Kategorije jela</h3>
+
+        <ul class="nested-list">
+            <li>Doručak
+                <ul>
+                    <li>Omleti</li>
+                    <li>Palačinke</li>
+                </ul>
+            </li>
+
+            <li>Ručak
+                <ul>
+                    <li>Pizza
+                        <ul>
+                            <li>Margarita</li>
+                            <li>Capricciosa</li>
+                        </ul>
+                    </li>
+                    <li>Tjestenine</li>
+                </ul>
+            </li>
+
+            <li>Deserti
+                <ul>
+                    <li>Tiramisu</li>
+                    <li>Lava kolač</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <!-- SKOČI NA VRH -->
+    <div class="top-link">
+        <a href="#pocetna">↑ Skoči na vrh</a>
+    </div>
+
+</section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Restoran "Mamma Mia". Sva prava zadržana.</p>
+    </footer>
+
+</body>
+</html>
