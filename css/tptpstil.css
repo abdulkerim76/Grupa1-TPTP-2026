@@ -587,15 +587,19 @@ input, textarea {
 ::-webkit-calendar-picker-indicator { filter: invert(0.8) sepia(1) saturate(5) hue-rotate(10deg); cursor: pointer; }
 
 
+
+/* ADEL */
+ 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
 body {
     font-family: Arial, sans-serif;
-    background: url("background.jpg") center/cover fixed no-repeat;
+    background: white;
     color: #333;
     line-height: 1.6;
 }
@@ -695,7 +699,7 @@ input:checked + .slider::before {
 
 .hero {
     height: 100vh;
-    background: url("restoran2.jpeg") center/cover no-repeat;
+    background: url("/images/restoran2.jpeg") center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -876,6 +880,13 @@ input[type="radio"] {
     display: flex;
 }
 
+#salate:checked ~ .content .item {
+    display: none;
+}
+#salate:checked ~ .content .item.salate {
+    display: flex;
+}
+
 /* FOOTER */
 
 footer {
@@ -961,7 +972,7 @@ th {
 
 #mapa img {
     width: 100%;
-    max-width: 900px;
+    max-width: 900px;   /* vraćena normalna veličina kao prije */
     display: block;
     margin: 0 auto 60px;
     border-radius: 10px;
@@ -994,4 +1005,116 @@ th {
 
 .top-link a:hover {
     color: #e76f51;
+}
+
+
+/* adel 
+
+/* UGNIJEŽĐNA LISTA */
+.lista-box {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 25px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+/* gornji red - 3 kartice */
+.lista-kartica:nth-child(1) {
+    grid-column: 1 / 3;
+}
+
+.lista-kartica:nth-child(2) {
+    grid-column: 3 / 5;
+}
+
+.lista-kartica:nth-child(3) {
+    grid-column: 5 / 7;
+}
+
+/* donji red - centrirani Deserti + Salate */
+.lista-kartica:nth-child(4) {
+    grid-column: 2 / 4;
+}
+
+.lista-kartica:nth-child(5) {
+    grid-column: 4 / 6;
+}
+
+.lista-kartica {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    border-top: 4px solid #b08a57;
+}
+
+.lista-kartica:hover {
+    transform: translateY(-5px);
+}
+
+.lista-kartica h4 {
+    color: #8b5a00;
+    margin-bottom: 15px;
+    font-size: 22px;
+    text-align: center;
+}
+
+.lista-kartica ul {
+    padding-left: 20px;
+}
+
+.lista-kartica ul li {
+    margin-bottom: 10px;
+    color: #444;
+    font-size: 16px;
+}
+
+.lista-kartica ul li ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.lista-kartica ul li ul li {
+    color: #666;
+    font-size: 15px;
+}
+
+
+/* OBOJENE TAČKE ZA UGNIJEŽĐENU LISTU */
+
+.lista-kartica ul {
+    padding-left: 22px;
+    list-style-type: disc;
+}
+
+.lista-kartica ul li {
+    margin-bottom: 10px;
+    color: #444;
+    font-size: 16px;
+}
+
+/* boja glavnih tačaka */
+.lista-kartica ul li::marker {
+    color: #b08a57;
+    font-size: 18px;
+}
+
+/* unutrašnja lista */
+.lista-kartica ul li ul {
+    margin-top: 8px;
+    padding-left: 22px;
+    list-style-type: circle;
+}
+
+.lista-kartica ul li ul li {
+    color: #666;
+    font-size: 15px;
+}
+
+/* boja unutrašnjih tačaka */
+.lista-kartica ul li ul li::marker {
+    color: #d48a2f;
+    font-size: 16px;
 }
