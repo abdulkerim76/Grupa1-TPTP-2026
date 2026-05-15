@@ -37,14 +37,62 @@
   </section>
 
 
-
-
-
     <main style="min-height: 100vh; padding-top: 100px;">
-   
+   <section class="o-nama" id="o-nama">
+  <div class="o-nama-mreza">
+    <div class="o-nama-vizualno">
+      <div class="slajder">
+        <div class="slajd aktivno">
+          <img src="images/slikarestorana1.jpg" alt="Restoran 1">
+        </div>
+        <div class="slajd">
+          <img src="images/slikarestorana2.jpg" alt="Restoran 2">
+        </div>
+        <div class="slajd">
+          <img src="images/slikarestorana3.jpg" alt="Restoran 3">
+        </div>
+      </div>
+      <div class="slajder-tacke">
+        <span class="tacka aktivno" onclick="idiNaSlajd(0)"></span>
+        <span class="tacka" onclick="idiNaSlajd(1)"></span>
+        <span class="tacka" onclick="idiNaSlajd(2)"></span>
+      </div>
+      <button class="slajd-dugme slajd-prethodna" onclick="promijeniSlajd(-1)">&#8249;</button>
+      <button class="slajd-dugme slajd-sljedeca" onclick="promijeniSlajd(1)">&#8250;</button>
+    </div>
 
-   <h1 align="center">Dobrodošli u Mamma Mia</h1>
+    <div class="o-nama-tekst">
+      <div class="oznaka-sekcije">Naša priča</div>
+      <h2 class="naslov-sekcije">Gdje detalji postaju <em>umjetnost</em></h2>
+      <p>Restoran Mamma Mia je kuća prestiža u kojoj se spajaju vrhunska gastronomija i kult gostoprimstva. Prepoznatljivi smo po spoju rustikalnog interijera i živog zelenila, stvarajući ambijent nenametljive elegancije u kojem je svaki detalj podređen Vašem užitku.</p>
+      <p>Naša jela nisu samo obrok, već iskustvo servirano na nesvakidašnjem posuđu. Bilo da planirate proslavu diplome, poslovni ručak ili Vam je potreban catering, tu smo da svaki Vaš važan trenutak učinimo besprijekornim.</p>
+      
+      <div class="o-nama-statistika">
+        <div class="stat-kartica">
+          <div class="stat-broj">15+</div>
+          <div class="stat-opis">Godina tradicije</div>
+        </div>
+        <div class="stat-kartica">
+          <div class="stat-broj">60+</div>
+          <div class="stat-opis">Jela u ponudi</div>
+        </div>
+        <div class="stat-kartica">
+          <div class="stat-broj">120</div>
+          <div class="stat-opis">Sjedećih mjesta</div>
+        </div>
+        <div class="stat-kartica">
+          <div class="stat-broj">★ 4.8</div>
+          <div class="stat-opis">Prosječna ocjena</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+   <h1 align="center">ponude</h1>
 </main>
+
+
 
     <footer>
 
@@ -79,9 +127,9 @@
  </footer>
 
 
-  <script src="tptpskripte.js"></script>
+  
 
 
-
+<script src="js/tptpskripte.js"></script>
 </body>
 </html>
