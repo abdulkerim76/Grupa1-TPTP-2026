@@ -1,3 +1,5 @@
+///////////////////////////////////////////////////////////////////////////////////////////
+
 let trenutniSlajd = 0;
 
 function prikaziSlajd(n) {
@@ -27,6 +29,9 @@ setInterval(() => {
     promijeniSlajd(1);
 }, 5000);
 
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
 // --- MODAL FUNKCIJE ---
 function prikaziModal(naslov, poruka, ikona) {
     const modal = document.getElementById("mojModal");
