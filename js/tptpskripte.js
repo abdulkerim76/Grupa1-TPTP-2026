@@ -35,14 +35,19 @@ setInterval(() => {
 // --- MODAL FUNKCIJE ---
 function prikaziModal(naslov, poruka, ikona) {
     const modal = document.getElementById("mojModal");
-    document.getElementById("modalNaslov").innerText = naslov;
-    document.getElementById("modalPoruka").innerText = poruka;
-    document.getElementById("modalIkona").innerText = ikona;
+    if (!modal) return;
+    const naslovEl = document.getElementById("modalNaslov");
+    const porukaEl = document.getElementById("modalPoruka");
+    const ikonaEl = document.getElementById("modalIkona");
+    if (naslovEl) naslovEl.innerText = naslov;
+    if (porukaEl) porukaEl.innerText = poruka;
+    if (ikonaEl) ikonaEl.innerText = ikona || "";
     modal.style.display = "block";
 }
 
 function zatvoriModal() {
-    document.getElementById("mojModal").style.display = "none";
+    const modal = document.getElementById("mojModal");
+    if (modal) modal.style.display = "none";
 }
 
 // --- TEMA ---
@@ -50,13 +55,10 @@ const themeToggle = document.getElementById('theme-toggle');
 if(themeToggle) {
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('light-mode');
-    
-        if(document.body.classList.contains('light-mode') ){ 
-            document.getElementById('tema-tekst').textContent = 'Light Mode';
 
-        }else { 
-             document.getElementById('tema-tekst').textContent = 'Dark Mode';
-
+        const temaLbl = document.getElementById('tema-tekst');
+        if (temaLbl) {
+            temaLbl.textContent = document.body.classList.contains('light-mode') ? 'Light Mode' : 'Dark Mode';
         }
        
     });
@@ -112,7 +114,7 @@ if(formaZal) {
 
 window.onclick = function(event) {
     const modal = document.getElementById("mojModal");
-    if (event.target == modal) {
+    if (modal && event.target === modal) {
         zatvoriModal();
     }
 }

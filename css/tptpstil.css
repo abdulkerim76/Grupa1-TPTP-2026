@@ -34,12 +34,50 @@ nav {
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 0 5%;
   height: 70px;
+  gap: 16px;
 }
 
-.nav-logo{
+/* Logo lijevo, linkovi vizuelno centrirani, tema desno */
+.nav-logo {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.nav-lista {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  white-space: nowrap;
+  max-width: 70vw;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.nav-lista::-webkit-scrollbar {
+  display: none;
+}
+
+.prekidac-kontejner {
+  margin-left: auto;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+body.light-mode nav .prekidac-kontejner {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.nav-logo .nav-logo-tekst {
     font-family: 'Playfair Display', serif;
     font-style: italic;
     font-size: 30px;
@@ -47,15 +85,15 @@ nav {
     color: rgb(233, 233, 118);
 }
 
+.nav-logo a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 .nav-logo img {
   height: 65px;
   width: auto;
-}
-
-.nav-lista {
-  display: flex;
-  gap: 30px;
-  list-style:none;
 }
 
 .nav-lista a {
@@ -108,7 +146,7 @@ nav {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('images/pattern.svg');
+  background: url('/images/pattern.svg');
   opacity: 0.3;
 }
  
@@ -994,27 +1032,13 @@ body {
     line-height: 1.6;
 }
 
-/* HEADER */
-
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: #b08a57;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 50px;
-    z-index: 1000;
-}
-
 .logo img {
     width: 120px;
 }
 
-/* NAVIGACIJA */
+/* NAVIGACIJA (liste unutar stranica koje još koriste generic nav ul) */
 
-nav ul {
+nav:not(:has(.nav-lista)) ul {
     list-style: none;
     display: flex;
     gap: 35px;
@@ -1089,6 +1113,8 @@ input:checked + .slider::before {
 
 .hero {
     height: 100vh;
+    box-sizing: border-box;
+    padding-top: 70px;
     background: url("/images/restoran2.jpeg") center/cover no-repeat;
     display: flex;
     align-items: center;

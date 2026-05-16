@@ -5,27 +5,28 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/tptpstil.css">
-        
-        <meta name="viewport" content="width=device-width, inital-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mamma Mia Tuzla</title>
 
     </head>
 
     <body>
     <nav>
-        <div class="nav-logo">Mamma Mia</div>
+        <div class="nav-logo">
+            <a href="index.html"><img src="/images/logo.png" alt="Mamma Mia"></a>
+        </div>
         <ul class="nav-lista">
-            <li><a href="#O nama">O nama</a></li>
+            <li><a href="index.html">O nama</a></li>
             <li><a href="sadrzaj.html">Meni</a></li>
-            <li><a href="#Ponude">Dnevne ponude</a></li>
+            <li><a href="index.html#ponude">Dnevne ponude</a></li>
             <li><a href="kontakt.html" class="nav-kontakt">Kontakt</a></li>
         </ul>
-         <div class="prekidac-kontejner">
-                <span id="tema-tekst">Dark Mode</span>
-                <button id="theme-toggle" class="toggle-switch" type="button">
-                    <span class="krug"></span>
-                </button>
-            </div>
+        <div class="prekidac-kontejner">
+            <span id="tema-tekst">Dark Mode</span>
+            <button id="theme-toggle" class="toggle-switch" type="button" aria-label="Promijeni temu">
+                <span class="krug"></span>
+            </button>
+        </div>
     </nav>
 
     <main class="glavni-kontejner" style="min-height: 100vh; padding-top: 100px;">
@@ -87,17 +88,38 @@
 
 
 
+
     <footer>
+
+    <ul class="footer-imena">
+        <li>Abdusselam Hasanbašić</li>
+        <li>Abdulkerim Ćosićkić</li>
+        <li>Adel Mujić</li>
+    </ul>
+
+    <div class="footer-sredina">
     <div class="footer-logo">Mamma Mia</div>
-    <div class="footer-tagline">Ristorante Italiano · Tuzla</div>
+    <div class="footer-tag">Ristorante Italiano · Tuzla</div>
     <div class="footer-linkovi">
       <a href="#O nama">O nama</a>
       <a href="sadrzaj.html">Meni</a>
       <a href="#Ponude">Dnevne ponude</a>
-      <a href="kontakt.html">Kontakt</a>
-    </div>
-    <div class="footer-prava">© 2026 Mamma Mia Tuzla. Sva prava pridržana.</div>
-  </footer>
+      <a href="kontakt.html">Kontakt</a></div>
+      
+    
+    <div class="footer-prava">© 2026 Mamma Mia Tuzla. <a href="https://github.com/abdulkerim76/Grupa1-TPTP-2026">TPTP. </a>Sva prava pridržana.</div>
+  </div>
+
+  <div class="footer-desno">
+        
+        <h3>Zapratite nas</h3>
+        <p>
+          <a href="https://www.instagram.com/mamamiaorigins/">Instagram</a></br>
+          <a href="https://www.facebook.com/mamamiaorigins/">Facebook</a>
+        </p>
+      </div>
+    
+ </footer>
  
     <div id="mojModal" class="modal">
         <div class="modal-sadrzaj">
