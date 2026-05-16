@@ -8,8 +8,10 @@
 </head>
 <body>
 
+    <header>
     <nav>
-        <div class="nav-logo"><img src="/images/logo.png" alt="Mamma Mia"></div>
+        <div class="nav-logo">
+            <img src="/images/logo.png" alt="Mamma Mia"></div>
         <ul class="nav-lista">
             <li><a href="#O nama">O nama</a></li>
             <li><a href="sadrzaj.html">Meni</a></li>
@@ -23,7 +25,9 @@
                 </button>
             </div>
     </nav>
+</header>
 
+<main>
     <!-- POČETNA / HERO -->
     <section id="pocetna" class="hero">
         <div class="overlay">
@@ -38,13 +42,16 @@
 
             <div class="buttons">
                 <a href="#meni" class="btn gold">POGLEDAJTE MENI</a>
-                <a href="#kontakt" class="btn transparent">REZERVIŠITE STO</a>
+                <a href="kontakt.html" class="btn transparent">REZERVIŠITE STO</a>
             </div>
         </div>
     </section>
 
     <!-- MENI -->
+   
     <section id="meni" class="meni">
+
+    <article>
         <h2>Meni restorana</h2>
 
         <input type="radio" name="tab" id="sva" checked>
@@ -143,7 +150,7 @@
                 <div class="item-info">
                     <h3>Tiramisu</h3>
                     <p>Italijanski desert sa bogatom kremom od mascarpone sira, kafom i laganim posipom kakaa, savršen za sladak završetak obroka.
-</p></p>
+                </p>
                 </div>
             </div>
 
@@ -179,9 +186,18 @@
                 </div>
             </div>
 
+                <div class="item salate">
+                    <img src="/images/sezonska.jpg" alt="Sezonska salata">
+                    <div class="item-info">
+                        <h3>Sezonska salata</h3>
+                        <p>Sezonska salata sa pažljivo odabranim svježim povrćem, domaćim maslinovim uljem i blagim začinskim biljem. Lagan, osvježavajući i zdrav obrok idealan uz svako glavno jelo.</p>
+                    </div>
+
 
 
         </div>
+
+        </article>
     </section>
 
    
@@ -193,15 +209,14 @@
 <section id="dnevne" class="detalji">
 
     <h2>Dnevne ponude i specijaliteti</h2>
-
     <!-- Bookmark navigacija -->
     <div class="bookmark-nav">
-        <a href="#tabela">Tabela</a>
+       
         <a href="#galerija">Galerija</a>
         <a href="#mapa">Mapa restorana</a>
-        <a href="#lista">Kategorije</a>
+        <a href="#lista">Kategorije</a> <br> <br>
     </div>
-
+<br><br>
     <!--  TABELA -->
     <section id="tabela">
         <h3>Cjenovnik specijaliteta</h3>
@@ -268,30 +283,6 @@
             <img src="/images/galerija6.jpg" alt="Specijalitet">
         </div>
     </section>
-
-<section id="mapa">
-    <h3>Mapa restorana</h3>
-
-    <img src="/images/mapa.jpg" alt="Mapa restorana" usemap="#restoranmap">
-
-    <map name="restoranmap">
-
-        <!-- KNJIGA LIJEVO -> MENI -->
-        <area
-            shape="rect"
-            coords="10,170,140,390"
-            href="#meni"
-            alt="Meni restorana">
-
-        <!-- STOLOVI -> kontakt.html -->
-        <area
-            shape="rect"
-            coords="300,120,850,500"
-            href="kontakt.html"
-            alt="Rezervacija stola">
-
-    </map>
-</section>
 
 
 <!-- UGNIJEŽĐENA LISTA -->
@@ -393,14 +384,44 @@
     </div>
 </section>
 
+
+
+
+<section id="mapa">
+    <h3>Mapa restorana</h3>
+
+    <img src="/images/mapa.jpg" alt="Mapa restorana" usemap="#restoranmap">
+
+    <map name="restoranmap">
+
+        <!-- KNJIGA LIJEVO -> MENI -->
+        <area
+            shape="rect"
+            coords="10,170,140,390"
+            href="#meni"
+            alt="Meni restorana">
+
+        <!-- STOLOVI -> kontakt.html -->
+        <area
+            shape="rect"
+            coords="300,120,850,500"
+            href="kontakt.html"
+            alt="Rezervacija stola">
+
+    </map>
+</section>
+
+
+
+
     <!-- SKOČI NA VRH -->
     <div class="top-link">
-        <a href="#pocetna">↑ Skoči na vrh</a>
+        <a href="#pocetna">↑ Vrati se na početak</a>
     </div>
 
 </section>
 
-
+</main>
      <footer>
 
     <ul class="footer-imena">
