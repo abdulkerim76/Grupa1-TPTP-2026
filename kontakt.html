@@ -1,38 +1,60 @@
 <!DOCTYPE HTML>
 <html lang = "bs">
 
-    
+    <!-- Stranica kontakt: podaci, rezervacija, utisci; modal za povratne poruke nakon formi. -->
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="css/tptpstil.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Isti raniji komad kao na drugim stranicama: tema prije prvog crtanja, bez treperenja. -->
+        <script>
+(function(){try{var t=localStorage.getItem('tptp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+        </script>
+        <link rel="stylesheet" href="css/tptpstil.css">
         <title>Mamma Mia Tuzla</title>
 
     </head>
 
-    <body>
-    <nav>
+    <body class="stranica-kontakt">
+    <!-- Navigacija: kopija kao na index/sadrzaj — izmjene uskladiti na svim stranicama. -->
+    <nav class="glavna-nav" id="glavna-nav" aria-label="Glavna navigacija">
         <div class="nav-logo">
             <a href="index.html"><img src="/images/logo.png" alt="Mamma Mia"></a>
         </div>
-        <ul class="nav-lista">
+
+        <ul class="nav-lista" id="primary-nav">
             <li><a href="index.html">O nama</a></li>
             <li><a href="sadrzaj.html">Meni</a></li>
             <li><a href="index.html#ponude">Dnevne ponude</a></li>
             <li><a href="kontakt.html" class="nav-kontakt">Kontakt</a></li>
         </ul>
-        <div class="prekidac-kontejner">
-            <span id="tema-tekst">Dark Mode</span>
+        <div class="nav-akcije">
+            <button type="button" class="nav-hamburger" id="nav-menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Otvori meni">
+                <span class="nav-hamburger-line" aria-hidden="true"></span>
+                <span class="nav-hamburger-line" aria-hidden="true"></span>
+                <span class="nav-hamburger-line" aria-hidden="true"></span>
+            </button>
+            <div class="prekidac-kontejner prekidac-tema">
+            <svg class="toggle-ikon toggle-ikon-mjesec" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>
+            </svg>
             <button id="theme-toggle" class="toggle-switch" type="button" aria-label="Promijeni temu">
                 <span class="krug"></span>
             </button>
+            <svg class="toggle-ikon toggle-ikon-sunce" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+            </svg>
+        </div>
         </div>
     </nav>
+    <div class="nav-overlay" id="nav-overlay" hidden aria-hidden="true"></div>
 
-    <main class="glavni-kontejner" style="min-height: 100vh; padding-top: 100px;">
+    <!-- Glavni sadržaj: naslov, dvije kutije u gornjem redu, donja zona za utiske. -->
+    <main class="glavni-kontejner kontakt-main">
        
        <h1 class="naslov">KONTAKT</h1>
 
+        <!-- Gornji red: lijevo kontakt + mapa, desno forma rezervacije (obrađuje je tptpskripte.js). -->
         <div class="GORNJI">
             <div class="kutija">
                 <h3>KONTAKT PODACI</h3>
@@ -47,7 +69,7 @@
                 </div>
             </div>
 
-            
+            <!-- Rezervacija: id polja moraju odgovarati onome što JS očekuje (ime, inputDatum, inputOsobe, inputVrijeme). -->
                 <div class="kutija">
     <h3>REZERVACIJA </h3>
     <form id="formaRezervacija"> <input type="text" id="ime" placeholder="Vaše ime i prezime" required>
@@ -68,6 +90,7 @@
 
         </div>
 
+        <!-- Donji blok: knjiga utisaka; šalju se poruke u modal nakon preventDefault na submitu. -->
         <div class="donji">
             <div class="kutija">
                 <h3>KNJIGA UTISAKA I ŽALBE</h3>
@@ -90,6 +113,7 @@
 
 
     <footer>
+    <!-- Podnožje: ista struktura kao na drugim stranicama; pogledati komentar o sidrima uz linkove. -->
 
     <ul class="footer-imena">
         <li>Abdusselam Hasanbašić</li>
@@ -101,6 +125,7 @@
     <div class="footer-logo">Mamma Mia</div>
     <div class="footer-tag">Ristorante Italiano · Tuzla</div>
     <div class="footer-linkovi">
+      <!-- Sidro treba tačan id: na index.html su o-nama i ponude; lokalni #O nama / #Ponude ne otvaraju sekcije ni ovdje ni tamo dok se ne usklade. -->
       <a href="#O nama">O nama</a>
       <a href="sadrzaj.html">Meni</a>
       <a href="#Ponude">Dnevne ponude</a>
@@ -120,10 +145,10 @@
       </div>
     
  </footer>
- 
+
+    <!-- Modal za kratke poruke (rezervacija / utisak); prikaz i sakrivanje rade funkcije iz tptpskripte.js. -->
     <div id="mojModal" class="modal">
         <div class="modal-sadrzaj">
-            <div id="modalIkona" class="modal-ikona"></div>
             <h2 id="modalNaslov">Naslov</h2>
             <p id="modalPoruka">Poruka ide ovdje.</p>
             <button class="btn-zatvori" onclick="zatvoriModal()">U REDU</button>
@@ -131,6 +156,7 @@
     </div>
 
 
+  <!-- Skripta: validacija formi, modal, tema i hamburger (dio logike pasivan ako element ne postoji na stranici). -->
   <script src="js/tptpskripte.js"></script>
   
 

@@ -1,34 +1,61 @@
 <!DOCTYPE HTML>
 <html lang = "bs">
 
-    
+    <!-- Naslovnica: predstavljanje restorana, slajder, dnevne ponude, mapa. -->
     <head>
+        <!-- Osnovni skup znakova i prilagodba širine na mobilnim uređajima. -->
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--
+          Rani komadić JS: čita sačuvanu temu iz localStorage i odmah postavlja data-theme na <html>.
+          Time se izbjegava „treperenje“ (korisnik vidi kratko jednu temu pa drugu kad se učita glavni JS).
+        -->
+        <script>
+(function(){try{var t=localStorage.getItem('tptp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+        </script>
         <link rel="stylesheet" href="css/tptpstil.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mamma Mia Tuzla</title>
 
     </head>
 
-    <body>
-    <nav>
+    <body class="stranica-index">
+    <!--
+      Glavna navigacija (isti blok je ručno kopiran na index, sadrzaj i kontakt).
+      Napomena za održavanje: izmjene linkova ili ARIA atributa treba uskladiti na sve tri stranice.
+    -->
+    <nav class="glavna-nav" id="glavna-nav" aria-label="Glavna navigacija">
         <div class="nav-logo">
           <a href="index.html"><img src="/images/logo.png" alt="Mamma Mia"></a>
         </div>
-        <ul class="nav-lista">
+        <ul class="nav-lista" id="primary-nav">
             <li><a href="index.html">O nama</a></li>
             <li><a href="sadrzaj.html">Meni</a></li>
             <li><a href="index.html#ponude">Dnevne ponude</a></li>
             <li><a href="kontakt.html" class="nav-kontakt">Kontakt</a></li>
         </ul>
-        <div class="prekidac-kontejner">
-            <span id="tema-tekst">Dark Mode</span>
+        <div class="nav-akcije">
+            <button type="button" class="nav-hamburger" id="nav-menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Otvori meni">
+                <span class="nav-hamburger-line" aria-hidden="true"></span>
+                <span class="nav-hamburger-line" aria-hidden="true"></span>
+                <span class="nav-hamburger-line" aria-hidden="true"></span>
+            </button>
+            <div class="prekidac-kontejner prekidac-tema">
+            <svg class="toggle-ikon toggle-ikon-mjesec" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>
+            </svg>
             <button id="theme-toggle" class="toggle-switch" type="button" aria-label="Promijeni temu">
                 <span class="krug"></span>
             </button>
+            <svg class="toggle-ikon toggle-ikon-sunce" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+            </svg>
+        </div>
         </div>
     </nav>
-    
+    <div class="nav-overlay" id="nav-overlay" hidden aria-hidden="true"></div>
+
+<!-- Hero: pozadinske slojevite div-ove i glavni poziv na akciju (meni / rezervacija). id="pocetna" koriste interni linkovi. -->
 <section class="pocetna" id="pocetna">
     <div class="pocetna-a"></div>
     <div class="pocetna-a pocetna-b"></div>
@@ -44,7 +71,8 @@
     </div>
   </section>
 
-    <main style="min-height: 100vh; padding-top: 100px;">
+    <main class="index-main">
+   <!-- O nama: tekst + slajd fotografija; tačke i strelice pozivaju funkcije iz tptpskripte.js (onclick). -->
    <section class="o-nama" id="o-nama">
   <div class="o-nama-mreza">
     <div class="o-nama-vizualno">
@@ -99,6 +127,7 @@
    
 </main>
 
+  <!-- Dnevne ponude: kartice s linkovima ka kontaktu gdje je to smisleno. id="ponude" služi za sidro (npr. index.html#ponude). -->
   <section class="ponude" id="ponude">
     <div class="ponude-naslov">
       <div class="oznaka-sekcije">
@@ -133,6 +162,7 @@
     </div>
   </section>
 
+    <!-- Ugrađena Google mapa lokacije restorana. -->
     <section class="lokacija-sekcija">
     <aside class="full-aside">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2843.802780146923!2d18.672345576224014!3d44.53967057107395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475ead18a73e89eb%3A0x165731ec20362dbc!2sMamaMia!5e0!3m2!1sen!2sba!4v1778884209184!5m2!1sen!2sba" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -141,6 +171,7 @@
 </section>
 
     <footer>
+    <!-- Imena članova tima / projekta (TPTP). -->
 
     <ul class="footer-imena">
         <li>Abdusselam Hasanbašić</li>
@@ -151,6 +182,10 @@
     <div class="footer-sredina">
     <div class="footer-logo">Mamma Mia</div>
     <div class="footer-tag">Ristorante Italiano · Tuzla</div>
+    <!--
+      Brzi linkovi unutar stranice: sidro mora tačno odgovarati id atributu (mala slova, crtice).
+      Audit: #O nama i #Ponude ne poklapaju se sa id="o-nama" i id="ponude" — sidra u podnožju trenutno ne rade dok se hash-evi ne usklade.
+    -->
     <div class="footer-linkovi">
       <a href="#O nama">O nama</a>
       <a href="sadrzaj.html">Meni</a>
@@ -172,7 +207,7 @@
     
  </footer>
 
-
+<!-- Zajedničke interaktivne funkcije: slajder, tema, mobilni meni; ostatak se izvršava samo ako postoje odgovarajući elementi. -->
 <script src="js/tptpskripte.js"></script>
 </body>
 </html>

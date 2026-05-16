@@ -1,33 +1,53 @@
 <!DOCTYPE html>
 <html lang="bs">
+<!-- Stranica menija (sadrzaj.html): hero, tabovi jela preko skrivenih radio dugmadi (bez JS za filter), dodatni sadržaj ispod. -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Rani izbor teme iz memorije preglednika da se izbjegne treperenje pri učitavanju. -->
+    <script>
+(function(){try{var t=localStorage.getItem('tptp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+    </script>
     <title>Restoran "Mamma Mia"</title>
     <link rel="stylesheet" href="css/tptpstil.css">
 </head>
-<body>
+<body class="stranica-meni">
 
-    <nav>
+    <!-- Zajednička navigacija (kopija s naslovnice i kontakta; držati usklađenom). -->
+    <nav class="glavna-nav" id="glavna-nav" aria-label="Glavna navigacija">
         <div class="nav-logo">
             <a href="index.html"><img src="/images/logo.png" alt="Mamma Mia"></a>
         </div>
-        <ul class="nav-lista">
+        <ul class="nav-lista" id="primary-nav">
             <li><a href="index.html">O nama</a></li>
             <li><a href="sadrzaj.html">Meni</a></li>
             <li><a href="index.html#ponude">Dnevne ponude</a></li>
             <li><a href="kontakt.html" class="nav-kontakt">Kontakt</a></li>
         </ul>
-        <div class="prekidac-kontejner">
-            <span id="tema-tekst">Dark Mode</span>
+        <div class="nav-akcije">
+            <button type="button" class="nav-hamburger" id="nav-menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Otvori meni">
+                <span class="nav-hamburger-line" aria-hidden="true"></span>
+                <span class="nav-hamburger-line" aria-hidden="true"></span>
+                <span class="nav-hamburger-line" aria-hidden="true"></span>
+            </button>
+            <div class="prekidac-kontejner prekidac-tema">
+            <svg class="toggle-ikon toggle-ikon-mjesec" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>
+            </svg>
             <button id="theme-toggle" class="toggle-switch" type="button" aria-label="Promijeni temu">
                 <span class="krug"></span>
             </button>
+            <svg class="toggle-ikon toggle-ikon-sunce" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+            </svg>
+        </div>
         </div>
     </nav>
+    <div class="nav-overlay" id="nav-overlay" hidden aria-hidden="true"></div>
 
-<main>
-    <!-- POČETNA / HERO -->
+<main class="sadrzaj-main">
+    <!-- Hero: uvodni blok; link „Pogledajte meni“ vodi na #meni u istom dokumentu. -->
     <section id="pocetna" class="hero">
         <div class="overlay">
             <p class="location">TUZLA • BOSNA I HERCEGOVINA</p>
@@ -46,8 +66,10 @@
         </div>
     </section>
 
-    <!-- MENI -->
-   
+    <!--
+      Meni: grupa radio inputa (jedno ime „tab“) + labeli; CSS preko :checked prikazuje odgovarajuće .item po klasama dorucak, rucak, vecera, desert, salate.
+      JavaScript nije potreban za prebacivanje kartica — sve su stavke u HTML-u, filter radi kroz stilove.
+    -->
     <section id="meni" class="meni">
 
     <article>
@@ -185,14 +207,13 @@
                 </div>
             </div>
 
-                <div class="item salate">
+            <div class="item salate">
                     <img src="/images/sezonska.jpg" alt="Sezonska salata">
                     <div class="item-info">
                         <h3>Sezonska salata</h3>
                         <p>Sezonska salata sa pažljivo odabranim svježim povrćem, domaćim maslinovim uljem i blagim začinskim biljem. Lagan, osvježavajući i zdrav obrok idealan uz svako glavno jelo.</p>
                     </div>
-
-
+            </div>
 
         </div>
 
@@ -204,19 +225,17 @@
 
 
 
-<!-- DNEVNE PONUDE / DETALJNI SADRŽAJ -->
+<!-- Sekcija „dnevne“: tabela cijena, galerija, ugnežđene liste, image map — dodatni sadržaj za TPTP zadatak. -->
 <section id="dnevne" class="detalji">
 
     <h2>Dnevne ponude i specijaliteti</h2>
-    <!-- Bookmark navigacija -->
+    <!-- Brzi skokovi unutar ove duge sekcije (galerija, mapa, liste). -->
     <div class="bookmark-nav">
-       
         <a href="#galerija">Galerija</a>
         <a href="#mapa">Mapa restorana</a>
-        <a href="#lista">Kategorije</a> <br> <br>
+        <a href="#lista">Kategorije</a>
     </div>
-<br><br>
-    <!--  TABELA -->
+    <!-- Tabela specijaliteta (semantički <table>). -->
     <section id="tabela">
         <h3>Cjenovnik specijaliteta</h3>
 
@@ -269,7 +288,7 @@
         </table>
     </section>
 
-    <!-- GALERIJA -->
+    <!-- Galerija statičnih slika restorana / jela. -->
     <section id="galerija">
         <h3>Galerija restorana</h3>
 
@@ -284,7 +303,7 @@
     </section>
 
 
-<!-- UGNIJEŽĐENA LISTA -->
+<!-- Ugnežđene liste kategorija jela (višeslojni <ul> / <li>). -->
 <section id="lista">
     <h3>Kategorije jela</h3>
 
@@ -386,6 +405,7 @@
 
 
 
+<!-- Slika sa klikabilnim zonama (<map>/<area>): jedna zona vodi na #meni, druga na kontakt za rezervaciju. -->
 <section id="mapa">
     <h3>Mapa restorana</h3>
 
@@ -393,14 +413,14 @@
 
     <map name="restoranmap">
 
-        <!-- KNJIGA LIJEVO -> MENI -->
+        <!-- Klik na označeni pravougaonik (lijevo) skače na dio menija. -->
         <area
             shape="rect"
             coords="10,170,140,390"
             href="#meni"
             alt="Meni restorana">
 
-        <!-- STOLOVI -> kontakt.html -->
+        <!-- Klik na centralni dio (stolove) otvara stranicu za rezervaciju. -->
         <area
             shape="rect"
             coords="300,120,850,500"
@@ -413,7 +433,7 @@
 
 
 
-    <!-- SKOČI NA VRH -->
+    <!-- Pomoćni link na početak ove duge stranice (sidro #pocetna). -->
     <div class="top-link">
         <a href="#pocetna">↑ Vrati se na početak</a>
     </div>
@@ -422,6 +442,7 @@
 
 </main>
      <footer>
+    <!-- Isto podnožje kao drugdje; sidra u linkovima moraju odgovarati stvarnim id-evima na ciljanoj stranici. -->
 
     <ul class="footer-imena">
         <li>Abdusselam Hasanbašić</li>
@@ -433,6 +454,7 @@
     <div class="footer-logo">Mamma Mia</div>
     <div class="footer-tag">Ristorante Italiano · Tuzla</div>
     <div class="footer-linkovi">
+      <!-- Napomena: za skok na „O nama“ i ponude s naslovnice koristiti index.html#o-nama i index.html#ponude (ili ispraviti id/hash). -->
       <a href="#O nama">O nama</a>
       <a href="sadrzaj.html">Meni</a>
       <a href="#Ponude">Dnevne ponude</a>
@@ -453,6 +475,7 @@
     
  </footer>
 
+<!-- Skripta: tema, hamburger; nema posebne logike za tabove menija — oni su čisto CSS. -->
 <script src="js/tptpskripte.js"></script>
 </body>
 </html>
