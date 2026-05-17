@@ -1,13 +1,10 @@
-
- /* Komentari su namjenski na nivou sekcija, ne uz svaku pojedinačnu deklaraciju.*/
-
 /* ---------- ABDULKERIM: zajednički reset, tema na <html>, tijelo, navigacija, podnožje ---------- */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 
 :root {
-/* Visina fiksne trake i boje akcenta / dugmadi za naslovnicu */
+/* Visina fiksne trake i boje  */
 --nav-height: 4rem;
 --dugme: #5c3502;
 --dugmehover: #dbad2d;
@@ -15,14 +12,14 @@
 --rezervacija: #E8BE6A;
 
   
-  /* Akcentna crvena i tamne neutralne nijanse (tekst, blokovi) */
+ 
   --crvena: #C4603A;
 
   
   --slajderpoz: #2C2416;
   --siva: #7A6E61;
 
-  /* Zlatni akcenti i granice */
+ 
   --gold: #C9973A;
   --gold-light: #E8BE6A;
 
@@ -37,7 +34,7 @@ html {
   color-scheme: light dark;
 }
 
-/* Hijerarhija teme: eksplicitni data-theme na <html> ima prednost; inače :not([data-theme]) prati prefers-color-scheme. */
+
 html[data-theme="light"] {
   color-scheme: light;
 }
@@ -112,8 +109,8 @@ body {
   display: block;
   width: auto;
   margin-top: 10px;
-  height: clamp(42px, 5.5vw, 58px); /* bilo clamp(32px, 4.5vw, 44px) */
-    margin-left: -20px; /* dodaj ovo */
+  height: clamp(42px, 5.5vw, 58px); 
+    margin-left: -20px; 
 }
 
 .nav-lista {
@@ -121,7 +118,7 @@ body {
   gap: 30px;
   list-style: none;
   margin-left: auto;
-  align-items: center; /* ovo već vjerovatno postoji */
+  align-items: center; 
     
   
 }
@@ -186,7 +183,7 @@ body {
 
 
 
-/* === Naslovnica: punoekranski hero ispod navigacije (.pocetna) === */
+/*  Naslovnica: punoekranski hero ispod navigacije (.pocetna)  */
 .pocetna {
   min-height: 100vh;
   background:
@@ -326,7 +323,7 @@ body {
   color: var(--rezervacija);
 }
 
-/* Glavni blok ispod heroa: bez min-height da se ne stvara praznina ispod kratkog sadržaja */
+/* Glavni blok ispod heroa */
 body.stranica-index .index-main {
   padding: 0;
   min-height: 0;
@@ -414,7 +411,7 @@ html[data-theme="dark"] body.stranica-index .o-nama .naslov-sekcije {
   text-transform: uppercase;
 }
 
-/* Kontejner slajda: apsolutno pozicionirani .slajd preklapaju se; .aktivno određuje vidljivost */
+
 .o-nama-vizualno {
   position: relative;
   overflow: hidden;
@@ -512,7 +509,7 @@ html[data-theme="dark"] body.stranica-index .o-nama .naslov-sekcije {
 
 
 
-/* === Sekcija dnevnih ponuda (tamna podloga, kartice) === */
+/* Sekcija dnevnih ponuda */
 .ponude {
   background: var(--slajderpoz);
   color: #fff;
@@ -653,7 +650,7 @@ body.stranica-index .ponude-mreza {
 
 
 
-/* === Ugrađena mapa ispod ponuda (širina kontejnera, omjer stranica iframa) === */
+
 .lokacija-sekcija {
   padding-top: clamp(2.25rem, 5vw, 3.5rem);
   padding-bottom: clamp(2.5rem, 5vw, 4rem);
@@ -791,13 +788,12 @@ footer {
 
 /*-----------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------------*/
-/* =====================
+/* 
 
 
 
 
-   RESPONZIVNO - LAPTOP (do 1280px)
-===================== */
+   laptop*/
 @media (max-width: 1280px) {
 
   .o-nama-mreza {
@@ -811,9 +807,7 @@ footer {
 }
 
 
-/* =====================
-   RESPONZIVNO - TABLET (do 768px)
-===================== */
+/* tablet */
 @media (max-width: 768px) {
 
   nav {
@@ -873,9 +867,7 @@ footer {
 }
 
 
-/* =====================
-   RESPONZIVNO - MOBITEL (do 480px)
-===================== */
+/* mobitel */
 @media (max-width: 480px) {
 
   nav {
@@ -968,7 +960,7 @@ footer {
 
 /* ABDUSSELAM */
 
-/* HERO SLIKE */
+/* HERO SLIKA */
 .hero-slika-kontejner {
   position: relative;
   width: 100%;
@@ -1018,8 +1010,6 @@ footer {
 
 
 
-
-/* === ABDUSSELAM: stranica kontakt — dodatne varijable u drugom :root bloku (pozadina „staklo“, obrub, tekst) === */
 :root {
     --zlatna: #d4a373;
     --bela-linija: #ffffff;
@@ -1045,7 +1035,7 @@ html[data-theme="light"] {
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body.stranica-kontakt {
-    /* Tamni sloj iznad fotografije — pojedinačna svojstva (ne skraćenica background) da kasnija pravila ne obrišu sliku */
+    /* Tamni sloj iznad fotografije */
     background-color: #1a1510;
     background-image: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.78)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1500');
     background-size: cover;
@@ -1058,7 +1048,7 @@ body.stranica-kontakt {
     min-height: 100vh;
 }
 
-/* Eksplicitno tamna podloga za kontakt čak i ako druga pravila ili OS daju konfliktne upute */
+/* Podešena uvijek tamna tema */
 html[data-theme="dark"] body.stranica-kontakt {
     background-color: #1a1510;
     background-image: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.78)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1500') !important;
@@ -1074,7 +1064,6 @@ html[data-theme="light"] body.stranica-kontakt {
     }
 }
 
-/* Kontakt: dodatni selektor .gornji; u HTML-u se za raspored koristi klasa .GORNJI (definisana kasnije). */
 .gornji { 
      display: flex;
      justify-content: flex-end;
@@ -1339,7 +1328,6 @@ html[data-theme="light"] textarea { background: white; color: black; }
      overflow-wrap: anywhere;
 }
 
-/* Kontakt: responzivan raspored kutija i ponašanje podnožja na uskim ekranima */
 body.stranica-kontakt .glavni-kontejner.kontakt-main {
     min-height: 100vh;
     padding: calc(var(--nav-height) + clamp(1rem, 4vw, 2.5rem)) clamp(0.875rem, 5vw, 1.5rem) clamp(1.5rem, 5vw, 2.5rem);
@@ -1427,7 +1415,7 @@ body.stranica-kontakt .GORNJI {
     }
 }
 
-/* Modalni prozor (poruke nakon forme) — cijeli ekran zaslon + središnja kartica */
+/* Modalni prozor */
 .modal {
      display: none;
       position: fixed;
@@ -1529,10 +1517,7 @@ body {
     line-height: 1.6;
 }
 
-/* ---------- ABDUSSELAM ---------- */
 
-/* Ako korisnik koristi dark mode na uređaju,
-   kontakt stranica automatski dobija tamniju pozadinu */
 @media (prefers-color-scheme: dark) {
     html:not([data-theme]) body.stranica-kontakt {
         background-color: #1a1510;
@@ -1540,10 +1525,10 @@ body {
 }
 
 
- /* ---------- ABDULKERIM ---------- */
+ /* ---------- ABDULKERIMOV DIO ZA DARK MODE ---------- */
 
 
-/* Naslovnica (.stranica-index): pozadina i boje teksta po temi, bez kontaktovog punoekranskog heroa */
+
 body.stranica-index {
     font-family: 'Lato', sans-serif;
     line-height: 1.6;
@@ -1552,13 +1537,13 @@ body.stranica-index {
     color: #3a332b;
     min-height: 100vh;
 }
-/*  Postavljanje tamne teme za naslovnicu */
+
 html[data-theme="dark"] body.stranica-index {
     background-color: #14110e;
     color: rgba(253, 249, 244, 0.9);
 }
 
-/*  Postavljanje svijetle teme za naslovnicu */
+
 html[data-theme="light"] body.stranica-index {
     background-color: var(--toplabijela);
     color: #3a332b;
@@ -1712,13 +1697,11 @@ html[data-theme="light"] body.stranica-index .lokacija-sekcija {
 
 
  
-/*----------  ADEL DIO ---------- */
+/*----------  ADELOV DIO ---------- */
 
 
 
 
-
-/* Stranica meni (.stranica-meni): lokalne varijable, razmaci i prilagodba tamnoj/svijetloj temi */
 body.stranica-meni {
     font-family: 'Lato', sans-serif;
     line-height: 1.6;
@@ -2068,7 +2051,7 @@ nav ul li a:hover {
     color: #2b1a0f;
 }
 
-/* Alternativni prekidač teme (slider / checkbox) — zaseban od glavnog .toggle-switch u traci */
+/* Alternativni prekidač teme (slider / checkbox)  */
 
 .toggle-container {
     display: flex;
@@ -2195,7 +2178,7 @@ input:checked + .slider::before {
     color: black;
 }
 
-/* Opšte sekcije menija i kontakta (naslovi, razmaci) */
+/* Opšte sekcije menija i kontakta */
 
 .meni,
 .kontakt {
@@ -2211,7 +2194,7 @@ input:checked + .slider::before {
     font-size: 35px;
 }
 
-/* Kartice jela: oznake su povezane sa skrivenim radio inputima (#sva, #dorucak, …) */
+/* Kartice jela: oznake su povezane sa skrivenim radio inputima */
 
 .tabs {
     text-align: center;
@@ -2382,7 +2365,7 @@ th {
     border-radius: 10px;
 }
 
-/* Mapa slike (<img usemap>): ograničena širina da ostane čitljiva */
+/* Mapa slike */
 
 #mapa img {
     width: 100%;
@@ -2496,7 +2479,7 @@ th {
 }
 
 
-/* Stilovi tačaka (marker) na ugnežđenim <ul> listama u karticama */
+/* Stilovi tačaka na ugnježdenim  listama u karticama */
 
 .lista-kartica ul {
     padding-left: 22px;
@@ -2531,10 +2514,16 @@ th {
     font-size: 16px;
 }
 
-/* 
-   RESPONZIVNOST — NAVIGACIJA BEZ HAMBURGERA
-   Breakpointi: 768px tablet, 480px mobitel.
--------------------------------------------------------------------- */
+
+
+/*---------------------------------------------------------------------------------*/
+
+
+
+
+
+/* Responzivnost za 3 breakpointa (Laptop, tablet, mobitel)
+Sve tri stranice zajedno, ChatGPT- uradio.*/
  
 /* --- Tablet (do 768px) --- */
 @media (max-width: 768px) {
