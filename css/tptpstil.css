@@ -82,12 +82,16 @@ body {
   right: 0;
   z-index: 100;
   background: rgba(146, 118, 71, 0.96);
+  justify-content: space-between;
   backdrop-filter: blur(8px);
   align-items: center;
   gap: clamp(8px, 1.5vw, 18px);
-  padding: 0.35rem clamp(12px, 4vw, 5%);
+  padding: 0 5%;
   min-height: var(--nav-height);
   box-sizing: border-box;
+  display: flex;        
+  height: 70px;        
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15); 
 }
 
 .nav-logo {
@@ -97,9 +101,6 @@ body {
   display: flex;
   align-items: center;
   
-  padding: 0 5%;
-  height: 70px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
 .nav-logo{
@@ -127,8 +128,9 @@ body {
 .nav-lista {
   display: flex;
   gap: 30px;
-  list-style:none;
-  margin-left: auto
+  list-style: none;
+  margin-left: auto;
+  
 }
 
 .nav-lista a {
@@ -144,18 +146,47 @@ body {
 .nav-lista a:hover { color: rgb(219, 173, 45); }
 
 .nav-kontakt {
-  display: inline-block;
+  
   background: rgb(92, 53, 2);
   color: #fff !important;
   padding: 7.5px 18px;
   border-radius: 4px;
   font-weight: 650;
   transition: background 0.4s ease;
+  display: inline-flex;
+  align-items: center;
 }
  
 .nav-kontakt:hover {
   background: rgb(219, 173, 45);
   color: #fff !important;
+}
+
+.nav-akcije {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.nav-akcije::before {
+  display: none;
+}
+
+.nav-akcije::after{
+    display: none;
+}
+
+.prekidac-kontejner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+
+.prekidac-kontejner::before,
+.nav-akcije::before {
+  content: none;
+  display: none;
 }
 
 
