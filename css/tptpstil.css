@@ -15,6 +15,8 @@
 
 /* ---------- ABDUSSELAM: zajednički reset / :root, tema na <html>, tijelo, navigacija, naslovnica, podnožje ---------- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
 :root {
 /* Visina fiksne trake i boje akcenta / dugmadi za naslovnicu */
 --nav-height: 4rem;
@@ -94,285 +96,13 @@ body {
   z-index: 2;
   display: flex;
   align-items: center;
-  min-width: 0;
+  
+  padding: 0 5%;
+  height: 70px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
-.nav-akcije {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 2;
-}
-
-.nav-lista {
-  display: flex;
-  align-items: center;
-  gap: clamp(12px, 2vw, 28px);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.nav-lista::-webkit-scrollbar {
-  display: none;
-}
-
-.prekidac-kontejner {
-  margin-left: 0;
-  flex-shrink: 0;
-  position: relative;
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.glavna-nav .toggle-switch {
-  appearance: none;
-  -webkit-appearance: none;
-  font: inherit;
-}
-
-@media (min-width: 961px) {
-  .glavna-nav {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-  }
-
-  .nav-logo {
-    grid-column: 1;
-  }
-
-  .nav-lista {
-    grid-column: 2;
-    position: static;
-    transform: none;
-    visibility: visible;
-    pointer-events: auto;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    white-space: nowrap;
-    height: auto;
-    width: auto;
-    max-height: none;
-    padding: 0;
-    margin: 0;
-    background: transparent;
-    box-shadow: none;
-    border: none;
-    overflow-x: auto;
-    overflow-y: visible;
-  }
-
-  .nav-akcije {
-    grid-column: 3;
-    justify-self: end;
-  }
-
-  .nav-hamburger {
-    display: none !important;
-  }
-
-  .nav-lista li {
-    border-bottom: none;
-  }
-
-  .nav-lista a {
-    font-size: 14px;
-    letter-spacing: 1.4px;
-  }
-
-  /* Bez :not bi padding:0 na svim <a> pregazio .nav-kontakt (niža specifičnost). */
-  .nav-lista a:not(.nav-kontakt) {
-    padding: 0;
-  }
-
-  .nav-lista a.nav-kontakt {
-    padding: 7.5px 18px;
-  }
-
-  .nav-kontakt {
-    margin: 0;
-    text-align: inherit;
-  }
-}
-
-@media (max-width: 960px) {
-  .glavna-nav {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-  }
-
-  .nav-logo {
-    flex-shrink: 0;
-    margin-right: auto;
-  }
-
-  .nav-akcije {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-    margin-left: 0;
-  }
-
-  .nav-hamburger {
-    display: inline-flex;
-  }
-
-  .nav-lista {
-    display: flex;
-    flex: 0 0 0;
-    min-width: 0;
-    max-width: 0;
-    overflow: hidden;
-    position: fixed;
-    top: var(--nav-height);
-    right: 0;
-    width: min(20rem, 88vw);
-    height: calc(100dvh - var(--nav-height));
-    max-height: calc(100vh - var(--nav-height));
-    z-index: 102;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    gap: 0;
-    padding: 0.75rem 0 1.25rem;
-    margin: 0;
-    list-style: none;
-    white-space: normal;
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    background: rgba(52, 40, 24, 0.98);
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: -12px 0 32px rgba(0, 0, 0, 0.25);
-    transform: translateX(100%);
-    visibility: hidden;
-    pointer-events: none;
-    transition: transform 0.28s ease, visibility 0.28s ease;
-  }
-
-  /* pointer-events se ne nasljeđuje — linkovi bi inače i dalje primali klik dok je meni vizualno zatvoren */
-  body:not(.nav-menu-open) .nav-lista,
-  body:not(.nav-menu-open) .nav-lista * {
-    pointer-events: none !important;
-  }
-
-  body.nav-menu-open .nav-lista {
-    transform: translateX(0);
-    visibility: visible;
-    pointer-events: auto;
-    max-width: min(20rem, 88vw);
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-
-  body.nav-menu-open .nav-lista a {
-    pointer-events: auto;
-  }
-
-  .nav-lista li {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  }
-
-  .nav-lista a {
-    display: block;
-    padding: 1rem 1.35rem;
-    font-size: 15px;
-    letter-spacing: 0.1em;
-  }
-
-  .nav-kontakt {
-    margin: 1rem 1.35rem 0.5rem;
-    text-align: center;
-    padding: 0.65rem 1rem !important;
-  }
-}
-
-.nav-overlay {
-  position: fixed;
-  inset: 0;
-  top: var(--nav-height);
-  /* Z-index ispod .glavna-nav (100): inače overlay kao sibling prekriva cijelu traku uključujući izvučeni meni */
-  z-index: 99;
-  background: rgba(14, 11, 8, 0.58);
-  cursor: pointer;
-}
-
-.nav-overlay[hidden] {
-  display: none !important;
-}
-
-.nav-overlay:not([hidden]) {
-  display: block;
-}
-
-body.nav-menu-open {
-  overflow: hidden;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .nav-lista {
-    transition: none;
-  }
-
-  .nav-hamburger-line {
-    transition: none;
-  }
-}
-
-.nav-hamburger {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: none;
-  border-radius: 10px;
-  background: rgba(0, 0, 0, 0.22);
-  color: rgba(255, 255, 255, 0.95);
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.nav-hamburger:hover {
-  background: rgba(0, 0, 0, 0.35);
-}
-
-.nav-hamburger:focus-visible {
-  outline: 2px solid var(--gold-light, #e8be6a);
-  outline-offset: 2px;
-}
-
-.nav-hamburger-line {
-  display: block;
-  width: 22px;
-  height: 2px;
-  border-radius: 1px;
-  background: currentColor;
-  transition: transform 0.28s ease, opacity 0.28s ease;
-}
-
-body.nav-menu-open .nav-hamburger-line:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-body.nav-menu-open .nav-hamburger-line:nth-child(2) {
-  opacity: 0;
-}
-
-body.nav-menu-open .nav-hamburger-line:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-.nav-logo .nav-logo-tekst {
+.nav-logo{
     font-family: 'Playfair Display', serif;
     font-style: italic;
     font-size: 30px;
@@ -391,8 +121,14 @@ body.nav-menu-open .nav-hamburger-line:nth-child(3) {
   display: block;
   height: clamp(32px, 4.5vw, 44px);
   width: auto;
-  max-width: min(132px, 30vw);
-  object-fit: contain;
+  margin-top: 10px;
+}
+
+.nav-lista {
+  display: flex;
+  gap: 30px;
+  list-style:none;
+  margin-left: auto
 }
 
 .nav-lista a {
@@ -820,6 +556,7 @@ body.stranica-index .ponude-mreza {
  
 .ponuda-kartica:hover { 
   background: rgba(255,255,255,0.06); 
+  transform: translateY(-6px);
 }
  
 .ponuda-kartica::after {
@@ -862,7 +599,7 @@ body.stranica-index .ponude-mreza {
   margin-top: 20px;
   font-size: 24px;
   font-family: 'Playfair Display', serif;
-  color: var(--terracotta-light);
+  color: var(--gold-light);
 }
  
 .ponuda-cijena--kontakt {
@@ -907,8 +644,15 @@ body.stranica-index .ponude-mreza {
     aspect-ratio: 16 / 4;
 }
 
+.ponuda-kartica,
+.stat-kartica,
+.dugme-jelovnik,
+.dugme-rezervacija {
+  transition: all 0.3s ease;
+}
 
-/* === Podnožje: tri kolone na širokim ekranima, na mobilnom redoslijed iz media query-a === */
+
+/*-----------------------------------------------------------------------------------*/
 footer {
   background: rgba(146, 118, 71);
   display: flex;
@@ -952,7 +696,7 @@ footer {
   font-size: 14px;
   color: rgba(255,255,255,0.4);
   text-decoration: none;
-  letter-spacing: 1.3;
+  letter-spacing: 1.3px;
   text-transform: uppercase;
   transition: color 0.4s;
 }
@@ -1016,6 +760,14 @@ footer {
 .footer-desno a:hover { color: rgb(219, 173, 45); }
 
 
+/*-----------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+/* =====================
+
+
+/*-----------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+/* =====================
 
 
 
@@ -1073,12 +825,20 @@ footer {
 
 
 
+/*
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////*/
 
 
 
 
 
-/* === ABDUSSELAM: alternativni punoekranski hero sa <img> umjesto CSS pozadine (.hero-slika-*) === */
+
+
+/* ABDUSSELAM */
+
+/* HERO SLIKE */
 .hero-slika-kontejner {
   position: relative;
   width: 100%;
