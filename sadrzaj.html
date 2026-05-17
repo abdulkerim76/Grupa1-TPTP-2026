@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    /* Ova skripta automatski učitava prethodno izabranu temu stranice (svijetlu/tamnu) iz localStorage, ovo je napravljeno kako bi korisniku koji ponovno posjeti stranicu ostao sačuvan njegov izbor teme   */
+   
     <script>
 (function(){try{var t=localStorage.getItem('tptp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
     </script>
@@ -14,7 +14,7 @@
 </head>
 <body class="stranica-meni">
 <header>
-    <!-- Zajednička navigacija (kopija s naslovnice i kontakta; držati usklađenom). -->
+   
     <nav class="glavna-nav" id="glavna-nav" aria-label="Glavna navigacija">
         <div class="nav-logo">
             <a href="index.html"><img src="/images/logo.png" alt="Mamma Mia"></a>
@@ -32,8 +32,7 @@
                 <span class="nav-hamburger-line" aria-hidden="true"></span>
             </button>
 
-            /* SVG ikonice mjeseca i sunca koristim kao vizuelni prikaz za tamnu i svijetlu temu.
-                Dugme između njih služi za promjenu teme stranice, a izbor se kasnije pamti preko localStorage. */
+           
 
 
             <div class="prekidac-kontejner prekidac-tema">
