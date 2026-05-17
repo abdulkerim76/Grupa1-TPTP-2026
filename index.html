@@ -1,52 +1,38 @@
 <!DOCTYPE HTML>
 <html lang = "bs">
 
-    <!-- Naslovnica: predstavljanje restorana, slajder, dnevne ponude, mapa. -->
+   
     <head>
-        <!-- Osnovni skup znakova i prilagodba širine na mobilnim uređajima. -->
+        
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--
-          Rani komadić JS: čita sačuvanu temu iz localStorage i odmah postavlja data-theme na <html>.
-          Time se izbjegava „treperenje“ (korisnik vidi kratko jednu temu pa drugu kad se učita glavni JS).
-        -->
         <script>
 (function(){try{var t=localStorage.getItem('tptp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
         </script>
         <link rel="stylesheet" href="css/tptpstil.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mamma Mia Tuzla</title>
 
     </head>
 
     <body class="stranica-index">
-    <!--
-      Glavna navigacija (isti blok je ručno kopiran na index, sadrzaj i kontakt).
-      Napomena za održavanje: izmjene linkova ili ARIA atributa treba uskladiti na sve tri stranice.
-    -->
+    
 
 
 <nav class="glavna-nav" id="glavna-nav" aria-label="Glavna navigacija">
         <div class="nav-logo">
             <a href="index.html"><img src="/images/logo.png" alt="Mamma Mia"></a>
         </div>
-        <ul class="nav-lista">
+        <ul class="nav-lista" id="primary-nav">
             <li><a href="index.html">O nama</a></li>
             <li><a href="sadrzaj.html">Meni</a></li>
             <li><a href="index.html#ponude">Dnevne ponude</a></li>
             <li><a href="kontakt.html" class="nav-kontakt">Kontakt</a></li>
         </ul>
         <div class="nav-akcije">
-            <button type="button" class="nav-hamburger" id="nav-menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Otvori meni">
-                <span class="nav-hamburger-line" aria-hidden="true"></span>
-                <span class="nav-hamburger-line" aria-hidden="true"></span>
-                <span class="nav-hamburger-line" aria-hidden="true"></span>
-            </button>
+          
 
-           
-
-
-            <div class="prekidac-kontejner prekidac-tema">
+          <!-- Prekidač za svjetlu/tamnu temu: ikonica mjeseca, toggle dugme i ikonica sunca. Logika promjene teme je u tptpskripte.js -->
+          <div class="prekidac-kontejner prekidac-tema">
             <svg class="toggle-ikon toggle-ikon-mjesec" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>
             </svg>
@@ -60,12 +46,7 @@
         </div>
         </div>
     </nav>
-    </header> 
-    <div class="nav-overlay" id="nav-overlay" hidden aria-hidden="true"></div>
-
-
-
-
+    
 
 
 
@@ -88,7 +69,7 @@
   </section>
 
     <main class="index-main">
-   <!-- O nama: tekst + slajd fotografija; tačke i strelice pozivaju funkcije iz tptpskripte.js (onclick). -->
+ 
    <section class="o-nama" id="o-nama">
   <div class="o-nama-mreza">
     <div class="o-nama-vizualno">
@@ -103,6 +84,9 @@
           <img src="/images/slikarestorana3.jpg" alt="Restoran 3">
         </div>
       </div>
+
+      <!-- Slajder napravljen uz pomoć Claude AI -->
+
       <div class="slajder-tacke">
         <span class="tacka aktivno" onclick="idiNaSlajd(0)"></span>
         <span class="tacka" onclick="idiNaSlajd(1)"></span>
@@ -143,7 +127,7 @@
    
 </main>
 
-  <!-- Dnevne ponude: kartice s linkovima ka kontaktu gdje je to smisleno. id="ponude" služi za sidro (npr. index.html#ponude). -->
+  
   <section class="ponude" id="ponude">
     <div class="ponude-naslov">
       <div class="oznaka-sekcije">
@@ -187,7 +171,6 @@
 </section>
 
     <footer>
-    <!-- Imena članova tima / projekta (TPTP). -->
 
     <ul class="footer-imena">
         <li>Abdusselam Hasanbašić</li>
@@ -198,14 +181,11 @@
     <div class="footer-sredina">
     <div class="footer-logo">Mamma Mia</div>
     <div class="footer-tag">Ristorante Italiano · Tuzla</div>
-    <!--
-      Brzi linkovi unutar stranice: sidro mora tačno odgovarati id atributu (mala slova, crtice).
-      Audit: #O nama i #Ponude ne poklapaju se sa id="o-nama" i id="ponude" — sidra u podnožju trenutno ne rade dok se hash-evi ne usklade.
-    -->
+   
     <div class="footer-linkovi">
-      <a href="#O nama">O nama</a>
+      <a href="#index.html#o-nama">O nama</a>
       <a href="sadrzaj.html">Meni</a>
-      <a href="#Ponude">Dnevne ponude</a>
+      <a href="index.html#ponude">Dnevne ponude</a>
       <a href="kontakt.html">Kontakt</a></div>
       
     

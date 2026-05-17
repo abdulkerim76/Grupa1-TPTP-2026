@@ -1,22 +1,11 @@
-/**
- * tptpstil.css — zajednički izgled sajta restorana Mamma Mia (naslovnica, meni, kontakt).
- *
- * Približan raspored:
- * 1) Globalni reset, varijable u :root i izbor teme (data-theme + prefers-color-scheme).
- * 2) Fiksna navigacija, mobilni „ladica“ meni i zatamnjujući overlay.
- * 3) Naslovnica: punoekranski hero (.pocetna), sekcija O nama sa slajderom, ponude, mapa, podnožje.
- * 4) Stranica kontakt: dodatne varijable, pozadina, raspored kutija, forme, modal.
- * 5) Stranica meni (sadrzaj): hero, tabovi preko skrivenih radio dugmadi (bez JS), dodatni blokovi (tabela, galerija, mapa sličica, liste).
- *
- * Komentari su namjenski na nivou sekcija, ne uz svaku pojedinačnu deklaraciju.
- *
- * Autorstvo po blokovima (TPTP, troje u timu): prettražiti oznake ABDUSSELAM, ABDULKERIM, ADEL.
- */
 
-/* ---------- ABDUSSELAM: zajednički reset / :root, tema na <html>, tijelo, navigacija, naslovnica, podnožje ---------- */
+ /* Komentari su namjenski na nivou sekcija, ne uz svaku pojedinačnu deklaraciju.*/
+
+/* ---------- ABDULKERIM: zajednički reset, tema na <html>, tijelo, navigacija, podnožje ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
+
 :root {
 /* Visina fiksne trake i boje akcenta / dugmadi za naslovnicu */
 --nav-height: 4rem;
@@ -42,7 +31,7 @@
 
 }
 
-/* Glatko skrolovanje na interna sidra; color-scheme daje pregledniku smjernicu za UI u svijetloj/tamnoj paleti. */
+
 html {
   scroll-behavior: smooth;
   color-scheme: light dark;
@@ -74,7 +63,7 @@ body {
   background: white;
 }
 
-/* ---------- Glavna navigacija: mreža na širokim ekranima, „ladica“ ispod 961px ---------- */
+
 .glavna-nav {
   position: fixed;
   top: 0;
@@ -109,6 +98,7 @@ body {
     font-size: 30px;
     letter-spacing: 1.2px;
     color: rgb(233, 233, 118);
+    
 }
 
 .nav-logo a {
@@ -120,9 +110,10 @@ body {
 
 .nav-logo img {
   display: block;
-  height: clamp(32px, 4.5vw, 44px);
   width: auto;
   margin-top: 10px;
+  height: clamp(42px, 5.5vw, 58px); /* bilo clamp(32px, 4.5vw, 44px) */
+    margin-left: -20px; /* dodaj ovo */
 }
 
 .nav-lista {
@@ -130,6 +121,8 @@ body {
   gap: 30px;
   list-style: none;
   margin-left: auto;
+  align-items: center; /* ovo već vjerovatno postoji */
+    
   
 }
 
@@ -803,54 +796,165 @@ footer {
 
 
 
+   RESPONZIVNO - LAPTOP (do 1280px)
+===================== */
+@media (max-width: 1280px) {
+
+  .o-nama-mreza {
+    gap: 40px;
+  }
+
+  .ponude-mreza {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+}
 
 
+/* =====================
+   RESPONZIVNO - TABLET (do 768px)
+===================== */
+@media (max-width: 768px) {
+
+  nav {
+    padding: 0 4%;
+  }
+
+  .nav-lista {
+    gap: 16px;
+  }
+
+  .nav-lista a {
+    font-size: 12px;
+  }
+
+  .pocetna h1 {
+    font-size: 52px;
+  }
+
+  .pocetna-opis {
+    font-size: 14px;
+  }
+
+  .o-nama-mreza {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .o-nama-vizualno {
+    aspect-ratio: 16/9;
+  }
+
+  .ponude-mreza {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .o-nama-statistika {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .lokacija-sekcija {
+    padding: 40px 4%;
+  }
+
+  .full-aside iframe {
+    aspect-ratio: 16 / 7;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+  }
+
+}
 
 
+/* =====================
+   RESPONZIVNO - MOBITEL (do 480px)
+===================== */
+@media (max-width: 480px) {
 
+  nav {
+    height: auto;
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
 
+  .nav-logo img {
+    height: 42px;
+  }
 
+  .nav-lista {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
 
+  .nav-lista a {
+    font-size: 11px;
+  }
 
+  .pocetna {
+    padding-top: 140px;
+  }
 
+  .pocetna h1 {
+    font-size: 38px;
+  }
 
+  .pocetna-opis {
+    font-size: 14px;
+  }
 
+  .pocetna-dugme {
+    flex-direction: column;
+    align-items: center;
+  }
 
+  .dugme-jelovnik,
+  .dugme-rezervacija {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
 
+  .o-nama-mreza {
+    grid-template-columns: 1fr;
+  }
 
+  .ponude-mreza {
+    grid-template-columns: 1fr;
+  }
 
+  .o-nama-statistika {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
 
+  .ponuda-kartica {
+    padding: 32px 24px;
+  }
 
+  .footer-linkovi {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
 
+  .footer-imena {
+    font-size: 11px;
+  }
 
+  .full-aside iframe {
+    aspect-ratio: 16 / 10;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
@@ -860,11 +964,6 @@ footer {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////*/
-
-
-
-
-
 
 
 /* ABDUSSELAM */
@@ -920,7 +1019,7 @@ footer {
 
 
 
-/* === ABDULKERIM: stranica kontakt — dodatne varijable u drugom :root bloku (pozadina „staklo“, obrub, tekst) === */
+/* === ABDUSSELAM: stranica kontakt — dodatne varijable u drugom :root bloku (pozadina „staklo“, obrub, tekst) === */
 :root {
     --zlatna: #d4a373;
     --bela-linija: #ffffff;
@@ -2432,12 +2531,173 @@ th {
     font-size: 16px;
 }
 
+/* 
+   RESPONZIVNOST — NAVIGACIJA BEZ HAMBURGERA
+   Breakpointi: 768px tablet, 480px mobitel.
+-------------------------------------------------------------------- */
+ 
+/* --- Tablet (do 768px) --- */
+@media (max-width: 768px) {
+ 
+    /* Nav prelazi u dva reda: prvi logo + prekidač, drugi linkovi */
+    .glavna-nav {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 4%;
+        gap: 8px;
+    }
+ 
+    /* Logo ostaje lijevo u prvom redu */
+    .nav-logo {
+        flex: 1;
+    }
+ 
+    /* Prekidač teme ostaje desno u prvom redu */
+    .nav-akcije {
+        flex-shrink: 0;
+        margin-left: auto;
+    }
+ 
+    /* Linkovi idu u drugi puni red ispod */
+    .nav-lista {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 6px 14px;
+        padding: 6px 0 4px;
+        border-top: 1px solid rgba(255,255,255,0.12);
+        margin-left: 0;
+    }
+ 
+    .nav-lista a {
+        font-size: 11.5px;
+        letter-spacing: 1px;
+    }
+ 
+    /* Kontakt dugme malo manji padding */
+    .nav-kontakt {
+        padding: 5px 12px;
+    }
+ 
+    /* Sadrzaj stranice: dodaj padding-top da ne ide ispod višeg nav-a */
+    body.stranica-index .pocetna,
+    body.stranica-meni .hero,
+    body.stranica-kontakt .kontakt-main {
+        padding-top: calc(var(--nav-height) + 48px);
+    }
+ 
+    /* Tabela na meniju: horizontalni scroll umjesto lomljenja */
+    body.stranica-meni table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 
+    .toggle-switch {
+    width: 46px;
+    height: 24px;
+    }
 
+    .krug {
+    width: 17px;
+    height: 17px;
+    top: 2px;
+    left: 3px;
+    }
 
+    html[data-theme="light"] .krug {
+    left: calc(100% - 3px - 17px);
+}
 
-
-
-
-
-
+}
+ 
+/* --- Mobitel (do 480px) --- */
+@media (max-width: 480px) {
+ 
+    .glavna-nav {
+        padding: 8px 3%;
+    }
+ 
+    .nav-lista {
+        gap: 5px 10px;
+    }
+ 
+    .nav-lista a {
+        font-size: 10.5px;
+        letter-spacing: 0.8px;
+    }
+ 
+    .nav-kontakt {
+        padding: 4px 10px;
+        font-size: 10.5px !important;
+    }
+ 
+    /* Hero naslovnica: još više padding-top jer nav ima dva reda */
+    body.stranica-index .pocetna {
+        padding-top: calc(var(--nav-height) + 60px);
+    }
+ 
+    /* Kontakt: naslov manji na mobitelu */
+    .naslov {
+        font-size: 2rem;
+    }
+ 
+    /* Meni tabovi: manji font i padding da stanu */
+    body.stranica-meni .tabs label {
+        font-size: 12px;
+        padding: 7px 12px;
+        margin: 3px;
+    }
+ 
+    /* Galerija: jedna kolona na mobitelu */
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+ 
+    /* Footer: sve na sredinu, jedno ispod drugog */
+    footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        text-align: center;
+    }
+ 
+    /* Mapa iframe na mobitelu: veći omjer da se vidi */
+    .full-aside iframe {
+        aspect-ratio: 4 / 3;
+    }
+ 
+    /* Stat kartice: 2 kolone ostaju ali manji font */
+    .stat-broj {
+        font-size: 28px;
+    }
+ 
+    /* Slajder dugmad: manja na mobitelu */
+    .slajd-dugme {
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+    }
+}
+ 
+/* --- Mali mobitel (do 360px) --- */
+@media (max-width: 360px) {
+ 
+    .nav-lista {
+        gap: 4px 8px;
+    }
+ 
+    .nav-lista a {
+        font-size: 9.5px;
+    }
+ 
+    /* Linkovi u nav-u idu u tri reda ako nema mjesta */
+    .nav-lista li {
+        flex-shrink: 0;
+    }
+ 
+    body.stranica-index .pocetna h1 {
+        font-size: 32px;
+    }
+}

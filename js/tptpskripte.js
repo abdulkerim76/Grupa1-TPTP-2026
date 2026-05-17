@@ -1,16 +1,4 @@
-/**
- * Skripte za sajt restorana Mamma Mia (naslovnica, meni, kontakt).
- * Učitava se na svim stranicama; dio koda radi samo ako postoje odgovarajući elementi u HTML-u.
- */
 
-/* =============================================================================
- * Slajd-show na naslovnici (sekcija „O nama“)
- * Funkcije su na window objektu jer ih HTML poziva preko atributa onclick na dugmićima i tačkama.
- * ============================================================================= */
-
-let trenutniSlajd = 0;
-
-/** Postavlja aktivni slajd i tačku po indeksu (s zaokruživanjem ako indeks izađe iz opsega). */
 function prikaziSlajd(n) {
     const slajdovi = document.querySelectorAll('.slajd');
     const tacke = document.querySelectorAll('.tacka');
@@ -41,9 +29,8 @@ setInterval(() => {
     promijeniSlajd(1);
 }, 5000);
 
-/* =============================================================================
- * Modalni dijalog (kontakt: poruke nakon slanja forme)
- * ============================================================================= */
+/* Modalni dijalog (kontakt: poruke nakon slanja forme)
+  */
 
 function prikaziModal(naslov, poruka) {
     const modal = document.getElementById("mojModal");
@@ -60,12 +47,7 @@ function zatvoriModal() {
     if (modal) modal.style.display = "none";
 }
 
-/* =============================================================================
- * Svijetla / tamna tema
- * - Sačuvani izbor u localStorage (ključ ispod) postavlja atribut data-theme na <html>.
- * - Ako nema sačuvanog izbora, uklanja se data-theme i prati se prefers-color-scheme (postavka OS-a).
- * - Ista logika u inline <script> u <head> sprječava treperenje pri prvom crtanju stranice.
- * ============================================================================= */
+/* Svijetla / tamna tema */
 
 const TPTP_THEME_KEY = 'tptp-theme';
 
@@ -78,7 +60,7 @@ function getStoredTheme() {
     }
 }
 
-/** Utvrđuje da li je trenutno „svijetla“ tema: eksplicitno u DOM-u ili podrazumijevano preko OS-a. */
+/* Utvrđuje da li je trenutno „svijetla“ tema */
 function resolvedThemeIsLight() {
     const t = document.documentElement.getAttribute('data-theme');
     if (t === 'light') return true;
@@ -95,7 +77,7 @@ function applyThemeFromStorage() {
     }
 }
 
-/** Ažurira aria-label i slične atribute dugmeta za promjenu teme (pristupačnost). */
+
 function syncThemeUi() {
     const themeToggle = document.getElementById('theme-toggle');
     const isLight = resolvedThemeIsLight();
@@ -134,93 +116,9 @@ colorSchemeMq.addEventListener('change', () => {
     }
 });
 
-/* =============================================================================
- * Hamburger izbornik na užim ekranima
- * IIFE izoluje lokane varijable; na širini ≥961px meni je uobičajena vodoravna traka, ispod toga „ladica“ + overlay.
- * ============================================================================= */
-(function () {
-    const mqWide = window.matchMedia('(min-width: 961px)');
-    const toggleBtn = document.getElementById('nav-menu-toggle');
-    const overlay = document.getElementById('nav-overlay');
-    const primaryNav = document.getElementById('primary-nav');
 
-    document.body.classList.remove('nav-menu-open');
-    if (overlay) {
-        overlay.setAttribute('hidden', '');
-        overlay.setAttribute('aria-hidden', 'true');
-    }
 
-    function navDrawerIsUsed() {
-        return !mqWide.matches;
-    }
-
-    function setMenuOpen(open) {
-        if (!navDrawerIsUsed()) {
-            document.body.classList.remove('nav-menu-open');
-            if (overlay) {
-                overlay.setAttribute('hidden', '');
-                overlay.setAttribute('aria-hidden', 'true');
-            }
-            if (toggleBtn) {
-                toggleBtn.setAttribute('aria-expanded', 'false');
-                toggleBtn.setAttribute('aria-label', 'Otvori meni');
-            }
-            return;
-        }
-        if (open) {
-            document.body.classList.add('nav-menu-open');
-            if (overlay) {
-                overlay.removeAttribute('hidden');
-                overlay.setAttribute('aria-hidden', 'false');
-            }
-        } else {
-            document.body.classList.remove('nav-menu-open');
-            if (overlay) {
-                overlay.setAttribute('hidden', '');
-                overlay.setAttribute('aria-hidden', 'true');
-            }
-        }
-        if (toggleBtn) {
-            toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-            toggleBtn.setAttribute('aria-label', open ? 'Zatvori meni' : 'Otvori meni');
-        }
-    }
-
-    function closeMenu() {
-        setMenuOpen(false);
-    }
-
-    function toggleMenu() {
-        if (!navDrawerIsUsed()) return;
-        setMenuOpen(!document.body.classList.contains('nav-menu-open'));
-    }
-
-    if (toggleBtn) {
-        toggleBtn.addEventListener('click', toggleMenu);
-    }
-
-    if (overlay) {
-        overlay.addEventListener('click', closeMenu);
-    }
-
-    if (primaryNav) {
-        primaryNav.querySelectorAll('a').forEach(function (a) {
-            a.addEventListener('click', function () {
-                if (navDrawerIsUsed()) closeMenu();
-            });
-        });
-    }
-
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closeMenu();
-    });
-
-    mqWide.addEventListener('change', function (e) {
-        if (e.matches) closeMenu();
-    });
-})();
-
-/* Datum rezervacije: ne može biti u prošlosti; podrazumijevano je današnji dan. */
+/* Datum rezervacije */
 const inputDatum = document.getElementById('inputDatum');
 if (inputDatum) {
     const danas = new Date().toISOString().split('T')[0];
@@ -228,7 +126,7 @@ if (inputDatum) {
     inputDatum.value = danas;
 }
 
-/* Kontakt forma rezervacije: samo klijentska validacija i simulacija uspjeha (nema slanja na server). */
+/* Kontakt forma rezervacije */
 const formaRez = document.getElementById('formaRezervacija');
 if (formaRez) {
     formaRez.addEventListener('submit', function(e) {
@@ -254,7 +152,7 @@ if (formaRez) {
     });
 }
 
-/* Knjiga utisaka: sprječava se osvježavanje stranice; poruka ide u modal ako postoji na stranici. */
+/* Knjiga utisaka */
 const formaZal = document.getElementById('formaZalba');
 if (formaZal) {
     formaZal.addEventListener('submit', function(e) {
@@ -265,10 +163,7 @@ if (formaZal) {
 }
 
 /**
- * Zatvaranje modala klikom na zaslon ispod sadržaja (prazan dio modala).
- * Napomena (audit): dodjeljivanje window.onclick zamijenjuje raniji handler na tom svojstvu;
- * pri dodavanju novih globalnih klik-obradnika bolje je koristiti addEventListener na document.
- */
+ * Zatvaranje modala klikom na zaslon ispod sadržaja */
 window.onclick = function(event) {
     const modal = document.getElementById("mojModal");
     if (modal && event.target === modal) {
