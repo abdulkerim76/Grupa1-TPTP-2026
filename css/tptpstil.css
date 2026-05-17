@@ -1624,7 +1624,7 @@ html[data-theme="light"] .modal-sadrzaj {
 
 
 
-/* ---------- ADEL: dodatni reset, `body`, naslovnica po temi, cijela stranica meni (tabovi, detalji, galerija, liste, mapa sličice) ---------- */
+/* ---------- Dio koji ide zajedno za index.html, sadrzaj.html i kontakt.html. ---------- */
 * {
     margin: 0;
     padding: 0;
@@ -1634,17 +1634,24 @@ html[data-theme="light"] .modal-sadrzaj {
 
 body {
     font-family: Arial, sans-serif;
-    /* Samo boja teksta — puna skraćenica background bi uklonila pozadinsku sliku s višeg nivoa */
     background-color: white;
     color: #333;
     line-height: 1.6;
 }
 
+/* ---------- ABDUSSELAM ---------- */
+
+/* Ako korisnik koristi dark mode na uređaju,
+   kontakt stranica automatski dobija tamniju pozadinu */
 @media (prefers-color-scheme: dark) {
     html:not([data-theme]) body.stranica-kontakt {
         background-color: #1a1510;
     }
 }
+
+
+ /* ---------- ABDULKERIM ---------- */
+
 
 /* Naslovnica (.stranica-index): pozadina i boje teksta po temi, bez kontaktovog punoekranskog heroa */
 body.stranica-index {
@@ -1655,12 +1662,13 @@ body.stranica-index {
     color: #3a332b;
     min-height: 100vh;
 }
-
+/*  Postavljanje tamne teme za naslovnicu */
 html[data-theme="dark"] body.stranica-index {
     background-color: #14110e;
     color: rgba(253, 249, 244, 0.9);
 }
 
+/*  Postavljanje svijetle teme za naslovnicu */
 html[data-theme="light"] body.stranica-index {
     background-color: var(--toplabijela);
     color: #3a332b;
@@ -1810,6 +1818,16 @@ html[data-theme="light"] body.stranica-index .lokacija-sekcija {
     }
 }
 
+
+
+
+ 
+/*----------  ADEL DIO ---------- */
+
+
+
+
+
 /* Stranica meni (.stranica-meni): lokalne varijable, razmaci i prilagodba tamnoj/svijetloj temi */
 body.stranica-meni {
     font-family: 'Lato', sans-serif;
@@ -1835,6 +1853,9 @@ body.stranica-meni {
     background-color: var(--meni-page-bg);
     color: var(--meni-text);
 }
+
+
+/* Kada se uključi dark mode, iste varijable samo dobijaju tamnije nijanse */
 
 html[data-theme="dark"] body.stranica-meni {
     --meni-page-bg: #14110e;
@@ -1869,6 +1890,10 @@ html[data-theme="light"] body.stranica-meni {
     --meni-link-hover: #e76f51;
     --meni-hero-scrim: rgba(0, 0, 0, 0.42);
 }
+
+
+
+/* Ako korisnik nije ručno birao temu, stranica prati sistemsku dark temu */
 
 @media (prefers-color-scheme: dark) {
     html:not([data-theme]) body.stranica-meni {
@@ -2118,7 +2143,7 @@ body.stranica-meni .hero .overlay {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
+/*   Responzivan dizajn tjst na manjim ekranima kartice idu jedna ispod druge */
 @media (max-width: 640px) {
     body.stranica-meni .lista-box {
         grid-template-columns: 1fr;
@@ -2133,7 +2158,7 @@ body.stranica-meni .hero .overlay {
     width: 120px;
 }
 
-/* Navigacija bez .nav-lista: stariji stil liste (ako se negdje koristi generički <nav><ul>) */
+
 
 nav:not(:has(.nav-lista)) ul {
     list-style: none;
@@ -2206,7 +2231,7 @@ input:checked + .slider::before {
     transform: translateX(24px);
 }
 
-/* Meni stranica: hero (#pocetna) sa pozadinskom slikom i središnjim natpisom */
+
 
 .hero {
     height: 100vh;
@@ -2246,8 +2271,6 @@ input:checked + .slider::before {
     margin: 0 auto 40px;
     line-height: 1.6;
 }
-
-/* Dugmad ispod hero teksta na stranici menija */
 
 .buttons {
     display: flex;
@@ -2357,7 +2380,9 @@ input[type="radio"] {
     color: #555;
 }
 
-/* Filtriranje kartica po klasama (.dorucak, .rucak, …) preko :checked na radio dugmićima — bez JavaScripta */
+/* CSS Filtriranje kartica po klasama (.dorucak, .rucak, itd) preko :checked, kada se klikne na radio određeno dugme prikazuje se samo ta kategorija  */
+
+
 
 #sva:checked ~ .content .item {
     display: flex;
@@ -2398,10 +2423,6 @@ input[type="radio"] {
     display: flex;
 }
 
-/* Zajedničko podnožje (sve stranice) — osnovni stil je ranije uz .stranica-kontakt posebno podešen u media query-ju */
-
-
-
 
 /* Blok „dnevne ponude / detalji“ na meni stranici: tabela, galerija, liste, mapa sličica */
 
@@ -2434,7 +2455,6 @@ input[type="radio"] {
     color: #e76f51;
 }
 
-/* Cjenovnik u obliku tabele */
 
 table {
     width: 100%;
@@ -2476,7 +2496,7 @@ th {
 
 #mapa img {
     width: 100%;
-    max-width: 900px;   /* Standardna maksimalna širina slike mape */
+    max-width: 900px;   
     display: block;
     margin: 0 auto 60px;
     border-radius: 10px;
@@ -2493,7 +2513,7 @@ th {
     margin-bottom: 10px;
 }
 
-/* Link „vrati se na početak“ na dnu duge meni stranice */
+
 .top-link {
     text-align: center;
     margin-top: 40px;
@@ -2520,7 +2540,7 @@ th {
     margin-bottom: 60px;
 }
 
-/* Prvi red mreže: tri kartice jednake širine */
+
 .lista-kartica:nth-child(1) {
     grid-column: 1 / 3;
 }
@@ -2533,7 +2553,7 @@ th {
     grid-column: 5 / 7;
 }
 
-/* Drugi red: dvije kartice (npr. deserti, salate) pomaknute prema sredini */
+/* Drugi red: dvije kartice (deserti, salate) pomaknute prema sredini */
 .lista-kartica:nth-child(4) {
     grid-column: 2 / 4;
 }
@@ -2550,6 +2570,9 @@ th {
     transition: 0.3s;
     border-top: 4px solid #b08a57;
 }
+
+
+/* Hover efekat kartice kada predjemo preko nje*/
 
 .lista-kartica:hover {
     transform: translateY(-5px);
@@ -2596,13 +2619,11 @@ th {
     font-size: 16px;
 }
 
-/* Boja oznaka prvog nivoa liste */
 .lista-kartica ul li::marker {
     color: #b08a57;
     font-size: 18px;
 }
 
-/* Podlista: drugi nivo sa drugačijim markerom */
 .lista-kartica ul li ul {
     margin-top: 8px;
     padding-left: 22px;

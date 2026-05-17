@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="bs">
-<!-- Stranica menija (sadrzaj.html): hero, tabovi jela preko skrivenih radio dugmadi (bez JS za filter), dodatni sadržaj ispod. -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Rani izbor teme iz memorije preglednika da se izbjegne treperenje pri učitavanju. -->
+
+
+    /* Ova skripta automatski učitava prethodno izabranu temu stranice (svijetlu/tamnu) iz localStorage, ovo je napravljeno kako bi korisniku koji ponovno posjeti stranicu ostao sačuvan njegov izbor teme   */
     <script>
 (function(){try{var t=localStorage.getItem('tptp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
     </script>
@@ -12,7 +13,7 @@
     <link rel="stylesheet" href="css/tptpstil.css">
 </head>
 <body class="stranica-meni">
-
+<header>
     <!-- Zajednička navigacija (kopija s naslovnice i kontakta; držati usklađenom). -->
     <nav class="glavna-nav" id="glavna-nav" aria-label="Glavna navigacija">
         <div class="nav-logo">
@@ -30,6 +31,11 @@
                 <span class="nav-hamburger-line" aria-hidden="true"></span>
                 <span class="nav-hamburger-line" aria-hidden="true"></span>
             </button>
+
+            /* SVG ikonice mjeseca i sunca koristim kao vizuelni prikaz za tamnu i svijetlu temu.
+                Dugme između njih služi za promjenu teme stranice, a izbor se kasnije pamti preko localStorage. */
+
+
             <div class="prekidac-kontejner prekidac-tema">
             <svg class="toggle-ikon toggle-ikon-mjesec" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>
@@ -44,10 +50,11 @@
         </div>
         </div>
     </nav>
+    </header> 
     <div class="nav-overlay" id="nav-overlay" hidden aria-hidden="true"></div>
 
+    
 <main class="sadrzaj-main">
-    <!-- Hero: uvodni blok; link „Pogledajte meni“ vodi na #meni u istom dokumentu. -->
     <section id="pocetna" class="hero">
         <div class="overlay">
             <p class="location">TUZLA • BOSNA I HERCEGOVINA</p>
@@ -66,10 +73,7 @@
         </div>
     </section>
 
-    <!--
-      Meni: grupa radio inputa (jedno ime „tab“) + labeli; CSS preko :checked prikazuje odgovarajuće .item po klasama dorucak, rucak, vecera, desert, salate.
-      JavaScript nije potreban za prebacivanje kartica — sve su stavke u HTML-u, filter radi kroz stilove.
-    -->
+
     <section id="meni" class="meni">
 
     <article>
@@ -122,6 +126,15 @@
                     <p>Klasična italijanska pizza sa sirom i bosiljkom, pripremljena na tradicionalan način.</p>
                 </div>
             </div>
+
+            <div class="item rucak">
+                <img src="/images/capricciosa.jpg" alt="Pizza capricciosa">
+                <div class="item-info">
+                    <h3>Pizza Capricciosa</h3>
+                    <p>Italijanska tradicija sa moćnim domaćim preokretom! Hrskavo testo, kvalitetna šunka, osvežavajuća sveža paprika i bogati, topljeni sir. Ukus koji se ne zaboravlja.</p>
+                </div>
+            </div>
+        
 
             <div class="item rucak">
                 <img src="/images/file.jpg" alt="File od jelena">
@@ -221,21 +234,15 @@
     </section>
 
    
-
-
-
-
-<!-- Sekcija „dnevne“: tabela cijena, galerija, ugnežđene liste, image map — dodatni sadržaj za TPTP zadatak. -->
 <section id="dnevne" class="detalji">
 
     <h2>Dnevne ponude i specijaliteti</h2>
-    <!-- Brzi skokovi unutar ove duge sekcije (galerija, mapa, liste). -->
     <div class="bookmark-nav">
         <a href="#galerija">Galerija</a>
         <a href="#mapa">Mapa restorana</a>
         <a href="#lista">Kategorije</a>
     </div>
-    <!-- Tabela specijaliteta (semantički <table>). -->
+    
     <section id="tabela">
         <h3>Cjenovnik specijaliteta</h3>
 
@@ -254,15 +261,12 @@
                 <td>20 min</td>
             </tr>
 
-
             <tr>
                 <td>Biftek sa vinskim umakom</td>
                 <td>Večera</td>
                 <td>40 KM</td>
                 <td>20 min</td>
             </tr>
-
-
 
             <tr>
                 <td>Tiramisu</td>
@@ -288,7 +292,7 @@
         </table>
     </section>
 
-    <!-- Galerija statičnih slika restorana / jela. -->
+   
     <section id="galerija">
         <h3>Galerija restorana</h3>
 
@@ -303,7 +307,7 @@
     </section>
 
 
-<!-- Ugnežđene liste kategorija jela (višeslojni <ul> / <li>). -->
+
 <section id="lista">
     <h3>Kategorije jela</h3>
 
@@ -403,37 +407,27 @@
 </section>
 
 
-
-
-<!-- Slika sa klikabilnim zonama (<map>/<area>): jedna zona vodi na #meni, druga na kontakt za rezervaciju. -->
 <section id="mapa">
     <h3>Mapa restorana</h3>
 
     <img src="/images/mapa.jpg" alt="Mapa restorana" usemap="#restoranmap">
 
     <map name="restoranmap">
-
-        <!-- Klik na označeni pravougaonik (lijevo) skače na dio menija. -->
         <area
             shape="rect"
             coords="10,170,140,390"
             href="#meni"
             alt="Meni restorana">
 
-        <!-- Klik na centralni dio (stolove) otvara stranicu za rezervaciju. -->
         <area
             shape="rect"
             coords="300,120,850,500"
             href="kontakt.html"
             alt="Rezervacija stola">
-
     </map>
 </section>
 
 
-
-
-    <!-- Pomoćni link na početak ove duge stranice (sidro #pocetna). -->
     <div class="top-link">
         <a href="#pocetna">↑ Vrati se na početak</a>
     </div>
@@ -442,7 +436,6 @@
 
 </main>
      <footer>
-    <!-- Isto podnožje kao drugdje; sidra u linkovima moraju odgovarati stvarnim id-evima na ciljanoj stranici. -->
 
     <ul class="footer-imena">
         <li>Abdusselam Hasanbašić</li>
@@ -454,7 +447,7 @@
     <div class="footer-logo">Mamma Mia</div>
     <div class="footer-tag">Ristorante Italiano · Tuzla</div>
     <div class="footer-linkovi">
-      <!-- Napomena: za skok na „O nama“ i ponude s naslovnice koristiti index.html#o-nama i index.html#ponude (ili ispraviti id/hash). -->
+
       <a href="#O nama">O nama</a>
       <a href="sadrzaj.html">Meni</a>
       <a href="#Ponude">Dnevne ponude</a>
